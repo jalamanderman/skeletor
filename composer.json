@@ -4,13 +4,15 @@
 	"require": {
 		"silverstripe/cms": "^3.1.13@stable",
 		"silverstripe/framework": "^3.1.13@stable",
-		"silverstripe/environmentcheck": "*"
+		"silverstripe-australia/gridfieldextensions": "1.1.0",
+		"silverstripe/userforms": "dev-master",
+		"undefinedoffset/sortablegridfield": "dev-master",
+		"unclecheese/betterbuttons": "dev-master",
+		"silverstripe/environmentcheck": "*",
+		"gdmedia/ss-auto-git-ignore": "0.0.3"
 	},
-	"require-dev": {
-		"phpunit/PHPUnit": "~3.7@stable"
-	},
-	"config": {
-		"process-timeout": 600
-	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev",
+	"scripts": {
+		"post-update-cmd": "GDM\\SSAutoGitIgnore\\UpdateScript::Go"
+	}
 }
