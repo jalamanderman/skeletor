@@ -14,6 +14,23 @@ class Page extends SiteTree {
 		
 		return $fields;
 	}
+	
+	/**
+	 * Get this object's controller
+	 ** Returns Page_Controller object
+	 */
+	public function MyController(){
+		$class = $this->ClassName . "_Controller";
+		$controller = new $class($this);
+		return $controller;
+	}
+	
+	/**
+	 * Example usage
+	 *
+	function FunctionInController(){
+		return $this->MyController()->FunctionInController();
+	}*/
 
 }
 
