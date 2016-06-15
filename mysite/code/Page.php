@@ -31,6 +31,10 @@ class Page extends SiteTree {
 	function FunctionInController(){
 		return $this->MyController()->FunctionInController();
 	}*/
+	
+	function OgImage(){
+		return $this->MyController()->OgImage();
+	}
 
 }
 
@@ -54,6 +58,16 @@ class Page_Controller extends ContentController {
 		Requirements::css($this->ThemeDir().'/css/layout.css');
 		Requirements::css($this->ThemeDir().'/css/form.css');
 		
+	}
+	
+	/**
+	 * Set image to use in og:image tag in document head
+	 * Returns Logo() set in SiteConfig if it has been set
+	 * Return false otherwise
+	 */
+	function OgImage(){
+		if($Image = SiteConfig::current_site_config()->Logo()) return $Image;
+		return false;
 	}
 
 
