@@ -19,7 +19,9 @@ module.exports = function(grunt) {
             options: {
                 banner: '/**\n * <%= pkg.name %>\n * Built <%= grunt.template.today("yyyy-mm-dd") %>\n **/\n\n',
 				ASCIIOnly: 'true',
-				drop_console: true
+				compress: {
+					drop_console: true
+				}
             },
             build: {
                 src: 'site/production/site.js',
@@ -28,13 +30,22 @@ module.exports = function(grunt) {
         },
         sass: {
 			dist: {
-				options: {
-					style: 'compressed'
-				},
 				files: {
 					'site/production/site.css': 'site/scss/site.scss'
 				}
 			}
+        },
+        cssmin: {
+            options: {
+                processImport: false,
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            build: {
+                files: {
+                    'site/production/site.min.css': 'site/production/site.css'
+                }
+            }
         },
 		watch: {
 			scripts: {
@@ -43,7 +54,7 @@ module.exports = function(grunt) {
 			},
 			css: {
 				files: 'site/scss/**/*.scss',
-				tasks: ['sass']
+				tasks: ['sass','cssmin']
 			}
 		}
     });
@@ -52,9 +63,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'watch']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'cssmin', 'watch']);
 
 };

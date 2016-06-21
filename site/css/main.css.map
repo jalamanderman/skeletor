@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA;;;IAGI;ACyCJ;;;IAGI;AC/CJ;;IAEI;ACFJ;;;;IAII;ACJJ;;IAEI;ACFJ;;;IAGI;ACHJ;;IAEI;ACFJ;;IAEI;ACFJ;;;IAGI",
-"sources": ["../scss/main.scss","../scss/tools/_mixins.scss","../scss/pages/_base.scss","../scss/partials/_base.scss","../scss/partials/_forms.scss","../scss/partials/_navigation.scss","../scss/partials/_page-footer.scss","../scss/partials/_page-header.scss","../scss/partials/_structure.scss"],
-"names": [],
-"file": "main.css"
-}

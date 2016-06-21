@@ -41,11 +41,11 @@ class Page_Controller extends ContentController {
 			Requirements::javascript('site/js/base.js');
 		}
 		
-		// global CSS requirements
+		// global css (compiled scss)
 		if( Director::isLive() ){
 			Requirements::css('site/production/site.min.css');
 		}else{
-			Requirements::css('site/css/site.css');
+			Requirements::css('site/production/site.css');
 		}
 	}
 }
