@@ -34,13 +34,18 @@ class Page_Controller extends ContentController {
 		parent::init();
 		
 		// global javascript requirements
-		Requirements::javascript('site/js/jquery.js');
-		Requirements::javascript('site/js/base.js');
+		if( Director::isLive() ){
+			Requirements::javascript('site/production/site.min.js');
+		}else{
+			Requirements::javascript('site/js/jquery.js');
+			Requirements::javascript('site/js/base.js');
+		}
 		
 		// global CSS requirements
-		Requirements::css('site/css/main.css');
-		
-		var_dump( Requirements::get_combine_files() );
-		die();
+		if( Director::isLive() ){
+			Requirements::css('site/production/site.min.css');
+		}else{
+			Requirements::css('site/css/main.css');
+		}
 	}
 }

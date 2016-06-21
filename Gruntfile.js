@@ -40,7 +40,17 @@ module.exports = function(grunt) {
                     'site/production/site.min.css': ['site/production/site.css']
                 }
             }
-        }
+        },
+		watch: {
+			scripts: {
+				files: ['site/js/*.js'],
+				tasks: ['concat','uglify']
+			},
+			css: {
+				files: 'site/scss/**/*.scss',
+				tasks: ['cssmin','sass']
+			}
+		}
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -48,8 +58,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'cssmin']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'cssmin', 'watch']);
 
 };

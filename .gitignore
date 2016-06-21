@@ -3,6 +3,7 @@
 /vendor/
 /node_modules/
 /silverstripe-cache/
+/.sass-cache/
 .DS_Store
 *.orig
 Thumbs.db

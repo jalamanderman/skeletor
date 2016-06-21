@@ -3,3 +3,9 @@
  * This covers general structural rules (like columns, clears and floats)
  **/
  
+nav.primary {
+	.menu-item {
+		display: inline-block;
+		text-decoration: none;
+	}
+}
