@@ -1,16 +1,16 @@
-## Skeletor
+# Skeletor
 
 This is the base platform for new installs on the SilverStripe framework. It indicates the preferred approach for all of our projects.
 
 
-# Requirements
+## Requirements
 
-- GruntJS
-- Node Package Manager (npm)
+- GruntJS (http://gruntjs.com/)
+- Node Package Manager (npm) (https://www.npmjs.com/)
 - SilverStripe 3.2
 
 
-# Setup
+## Setup
 
 1. Clone this repository to your local environment
 2. Create your `_ss_environment.php` file (use the example if necessary). Remember to keep this outside of the `public_html` folder!
