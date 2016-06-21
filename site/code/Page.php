@@ -20,11 +20,6 @@ class Page extends SiteTree {
 		$controller = new $class($this);
 		return $controller;
 	}
-	
-	function OgImage(){
-		return $this->MyController()->OgImage();
-	}
-
 }
 
 class Page_Controller extends ContentController {
@@ -44,15 +39,8 @@ class Page_Controller extends ContentController {
 		
 		// global CSS requirements
 		Requirements::css('site/css/main.css');
-	}
-	
-	/**
-	 * Set image to use in og:image tag in document head
-	 * Returns Logo() set in SiteConfig if it has been set
-	 * Return false otherwise
-	 */
-	function OgImage(){
-		if($Image = SiteConfig::current_site_config()->Logo()) return $Image;
-		return false;
+		
+		var_dump( Requirements::get_combine_files() );
+		die();
 	}
 }

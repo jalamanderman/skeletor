@@ -1,0 +1,20 @@
+{
+  "name": "Skeletor",
+  "version": "1.0.0",
+  "author": "James Barnsley",
+  "description": "Base install for SilverStripe websites",
+  "repository": "https://github.com/plasticstudio/skeletor",
+  "licenses": {
+    "type": "Apache License",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.11.0",
+    "grunt-contrib-sass": "0.8.0"
+  }
+}
