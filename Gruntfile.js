@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    'site/css/*.css': 'site/production/site.min.css'
+                   'site/production/site.min.css': 'site/css/*.css'
                 }
             }
         },
