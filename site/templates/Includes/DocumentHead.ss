@@ -12,13 +12,14 @@
 	<meta property="og:url" content="{$BaseHref}{$Link}?1" />
 	<meta property="og:title" content="$Title" />
 	<meta property="og:description" content="$MetaDescription" />
+    
 	<% if OgImage %>
 		<meta property="og:image" content="$OgImage.AbsoluteURL" />
 	<% end_if %>
 	
-	<link rel="shortcut icon" type="image/ico" href="/{$ThemeDir}/favicon.ico" />
-	<link rel="shortcut icon" type="image/x-icon" href="/{$ThemeDir}/favicon.ico" />
-	<link rel="shortcut-icon" href="/{$ThemeDir}/favicon.ico" />
+	<link rel="shortcut icon" type="image/ico" href="/site/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="/site/favicon.ico" />
+	<link rel="shortcut-icon" href="/site/favicon.ico" />
 	
 	<% include GoogleAnalytics %>
 	

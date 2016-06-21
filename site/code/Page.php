@@ -1,15 +1,11 @@
 <?php
-
 class Page extends SiteTree {
 
-	private static $db = array(
-	);
+	private static $db = array();
 
-	private static $has_one = array(
-	);
+	private static $has_one = array();
 	
-	public function getCMSFields(){
-	
+	public function getCMSFields(){	
 		$fields = parent::getCMSFields();
 		
 		return $fields;
@@ -17,20 +13,13 @@ class Page extends SiteTree {
 	
 	/**
 	 * Get this object's controller
-	 ** Returns Page_Controller object
+	 * @return obj
 	 */
 	public function MyController(){
 		$class = $this->ClassName . "_Controller";
 		$controller = new $class($this);
 		return $controller;
 	}
-	
-	/**
-	 * Example usage
-	 *
-	function FunctionInController(){
-		return $this->MyController()->FunctionInController();
-	}*/
 	
 	function OgImage(){
 		return $this->MyController()->OgImage();
@@ -40,24 +29,23 @@ class Page extends SiteTree {
 
 class Page_Controller extends ContentController {
 
-	private static $allowed_actions = array (
-	);
+	private static $allowed_actions = array();
 
-	public function init() {
-	
+	/**
+	 * When we initialize this controller
+	 * This happens during the birth of the universe
+	 **/
+	public function init() {	
 		parent::init();
-
-		/**** JS ****/
-		//Requirements::javascript(THIRDPARTY_DIR.'/jquery/jquery.js');
-		//Requirements::javascript($this->ThemeDir().'/js/effects.js');
 		
-		/**** CSS ****/
-		//Requirements::css('http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700');
-		//Requirements::css('http://fonts.googleapis.com/css?family=Nunito:400,300');
-		Requirements::css($this->ThemeDir().'/css/typography.css');
-		Requirements::css($this->ThemeDir().'/css/layout.css');
-		Requirements::css($this->ThemeDir().'/css/form.css');
+		// global javascript requirements
+		Requirements::javascript('site/js/jquery.js');
+		Requirements::javascript('site/js/base.js');
 		
+		// global CSS requirements
+		Requirements::css('site/css/typography.css');
+		Requirements::css('site/css/layout.css');
+		Requirements::css('site/css/form.css');
 	}
 	
 	/**
@@ -69,6 +57,4 @@ class Page_Controller extends ContentController {
 		if($Image = SiteConfig::current_site_config()->Logo()) return $Image;
 		return false;
 	}
-
-
 }
