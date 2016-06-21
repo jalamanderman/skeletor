@@ -43,9 +43,7 @@ class Page_Controller extends ContentController {
 		Requirements::javascript('site/js/base.js');
 		
 		// global CSS requirements
-		Requirements::css('site/css/typography.css');
-		Requirements::css('site/css/layout.css');
-		Requirements::css('site/css/form.css');
+		Requirements::css('site/css/main.css');
 	}
 	
 	/**
