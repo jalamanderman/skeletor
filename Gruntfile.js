@@ -30,9 +30,13 @@ module.exports = function(grunt) {
         },
         sass: {
 			dist: {
-				files: {
-					'site/production/site.css': 'site/scss/site.scss'
-				}
+				files: [{
+							expand: true,
+							cwd: 'site/scss',
+							src: ['*.scss'],
+							dest: 'site/css',
+							ext: '.css'
+						}]
 			}
         },
         cssmin: {
@@ -43,7 +47,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    'site/production/site.min.css': 'site/production/site.css'
+                    'site/css/*.css': 'site/production/site.min.css'
                 }
             }
         },

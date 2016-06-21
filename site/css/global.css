@@ -1,0 +1,45 @@
+/**
+ * Ease between states
+ * Use this to smooth hover/active/focus events
+ **/
+/** 
+ * Global colour palette
+ **/
+/** 
+ * All generic typographic styles
+ *
+ * Set the base-level typography here. This includes shared h1, h2, etc as well as
+ * paragraphs, links, lists and so on. For specific buttons, headings and links create
+ * a separate file in /components/_mycomponent.scss
+ **/
+/** 
+ * General form styles
+ *
+ * These styles will be accommodated by default on all forms, so keep the selectors
+ * (ie .field.text) generic. For a unique form (ie login form) create a new file in the
+ * format /components/_form-myform.scss.
+ **/
+/** 
+ * All navigation elements
+ *
+ * Global page navigation menus, mobile menus and general site navigation.
+ * Do not use this file for element navigation (ie sliders).
+ **/
+nav.primary .menu-item {
+  display: inline-block;
+  text-decoration: none; }
+
+/** 
+ * Global page footer
+ **/
+/** 
+ * Global page header/banner
+ **/
+/** 
+ * Global structure elements
+ *
+ * General structural rules (like columns, clears and floats) that are shared
+ * throughout the whole site.
+ **/
+
+/*# sourceMappingURL=global.css.map */
