@@ -37,7 +37,7 @@ class Page_Controller extends ContentController {
 		if( Director::isLive() ){
 			Requirements::javascript('site/production/site.min.js');
 		}else{
-			Requirements::javascript('site/js/jquery.js');
+			Requirements::javascript('site/js/vendor/jquery.js');
 			Requirements::javascript('site/js/base.js');
 		}
 		
