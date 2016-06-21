@@ -20,11 +20,6 @@ class Page extends SiteTree {
 		$controller = new $class($this);
 		return $controller;
 	}
-	
-	function OgImage(){
-		return $this->MyController()->OgImage();
-	}
-
 }
 
 class Page_Controller extends ContentController {
@@ -39,20 +34,18 @@ class Page_Controller extends ContentController {
 		parent::init();
 		
 		// global javascript requirements
-		Requirements::javascript('site/js/jquery.js');
-		Requirements::javascript('site/js/base.js');
+		if( Director::isLive() ){
+			Requirements::javascript('site/production/site.min.js');
+		}else{
+			Requirements::javascript('site/js/vendor/jquery.js');
+			Requirements::javascript('site/js/base.js');
+		}
 		
 		// global CSS requirements
-		Requirements::css('site/css/main.css');
-	}
-	
-	/**
-	 * Set image to use in og:image tag in document head
-	 * Returns Logo() set in SiteConfig if it has been set
-	 * Return false otherwise
-	 */
-	function OgImage(){
-		if($Image = SiteConfig::current_site_config()->Logo()) return $Image;
-		return false;
+		if( Director::isLive() ){
+			Requirements::css('site/production/site.min.css');
+		}else{
+			Requirements::css('site/css/main.css');
+		}
 	}
 }
