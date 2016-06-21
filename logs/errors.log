@@ -1,1 +1,0 @@
-[21-Jun-2016 13:25:58] Error at framework/core/Object.php line 739: Uncaught Exception: Object->__call(): the method 'logo' does not exist on 'SiteConfig' (http://skeletor.james/page-not-found/)

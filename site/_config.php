@@ -9,5 +9,6 @@ i18n::set_locale('en_US');
 DataObject::add_extension('SiteConfig', 'SiteConfigExtension');
 
 // specify log files
-SS_Log::add_writer(new SS_LogFileWriter('../logs/info.log'), SS_Log::NOTICE);
-SS_Log::add_writer(new SS_LogFileWriter('../logs/errors.log'), SS_Log::ERR);
+$path = BASE_PATH.'/../logs';
+SS_Log::add_writer(new SS_LogFileWriter($path.'/info.log'), SS_Log::WARN, '<=');
+SS_Log::add_writer(new SS_LogFileWriter($path.'/errors.log'), SS_Log::ERR);
