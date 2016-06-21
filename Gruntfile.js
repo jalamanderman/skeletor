@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'site/production/site.css': 'site/scss/main.scss'
+					'site/production/site.css': 'site/scss/site.scss'
 				}
 			}
         },
