@@ -29,25 +29,22 @@ module.exports = function(grunt) {
             }
         },
         sass: {
-			dist: {
-				files: [{
-							expand: true,
-							cwd: 'site/scss',
-							src: ['*.scss'],
-							dest: 'site/css',
-							ext: '.css'
-						}]
+			build: {
+				files: {
+					'site/production/site.css': 'site/scss/site.scss'
+				}
 			}
         },
         cssmin: {
             options: {
                 processImport: false,
                 shorthandCompacting: false,
-                roundingPrecision: -1
+                roundingPrecision: -1,
+				sourceMap: true
             },
             build: {
                 files: {
-                   'site/production/site.min.css': 'site/css/*.css'
+					'site/production/site.min.css': 'site/production/site.css'
                 }
             }
         },

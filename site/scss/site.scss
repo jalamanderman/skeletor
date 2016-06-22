@@ -1,0 +1,27 @@
+/**
+ * Primary compiling styles file
+ *
+ * This is the only file that our compiler reads, so if you don't include something
+ * in here, it won't be compiled. Make sure you include mixins and functions first
+ * so the following files can use them.
+ **/
+
+ /* all files in the tools folder */
+@import 'tools/mixins';
+
+/* all files in the global folder */
+@import 'global/reset';
+@import 'global/colours';
+@import 'global/typography';
+@import 'global/page-header';
+@import 'global/page-footer';
+@import 'global/forms';
+@import 'global/navigation';
+@import 'global/structure';
+
+/* all files in the components folder */
+@import 'components/form-login';
+
+/* all files in the pages folder */
+@import 'pages/base';
+@import 'pages/home';

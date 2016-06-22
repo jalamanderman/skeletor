@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AA4CA;;;IAGI;AC/CJ;;;;;IAKI;ACLJ;;;IAGI",
-"sources": ["../scss/tools/_mixins.scss","../scss/pages/_base.scss","../scss/pages/_home.scss"],
-"names": [],
-"file": "pages.css"
-}

@@ -1,0 +1,119 @@
+/**
+ * Primary compiling styles file
+ *
+ * This is the only file that our compiler reads, so if you don't include something
+ * in here, it won't be compiled. Make sure you include mixins and functions first
+ * so the following files can use them.
+ **/
+/* all files in the tools folder */
+/**
+ * Ease between states
+ * Use this to smooth hover/active/focus events
+ **/
+/* all files in the global folder */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Reset */
+html, body,
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+img,
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+nav li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }
+nav a:hover {
+  text-decoration: none; }
+
+/** 
+ * Global colour palette
+ **/
+/** 
+ * All generic typographic styles
+ *
+ * Set the base-level typography here. This includes shared h1, h2, etc as well as
+ * paragraphs, links, lists and so on. For specific buttons, headings and links create
+ * a separate file in /components/_mycomponent.scss
+ **/
+/** 
+ * Global page header/banner
+ **/
+/** 
+ * Global page footer
+ **/
+/** 
+ * General form styles
+ *
+ * These styles will be accommodated by default on all forms, so keep the selectors
+ * (ie .field.text) generic. For a unique form (ie login form) create a new file in the
+ * format /components/_form-myform.scss.
+ **/
+/** 
+ * All navigation elements
+ *
+ * Global page navigation menus, mobile menus and general site navigation.
+ * Do not use this file for element navigation (ie sliders).
+ **/
+nav.primary .menu-item {
+  display: inline-block;
+  text-decoration: none; }
+
+/** 
+ * Global structure elements
+ *
+ * General structural rules (like columns, clears and floats) that are shared
+ * throughout the whole site.
+ **/
+/* all files in the components folder */
+/** 
+ * General form styles
+ *
+ * These styles will be accommodated by default on all forms, so keep the selectors
+ * (ie .field.text) generic. For a unique form (ie login form) create a new file in the
+ * format /components/_form-myform.scss.
+ **/
+/* all files in the pages folder */
+/**
+ * Generic page structure
+ *
+ * Use this as your base-level page layout. For elements shared globally use /partials/_element or
+ * if your page is a unique class and layout, create a new /pages/_mypage file
+ **/
+/**
+ * Homepage design
+ * A unique design and layout, for a specific page type/class
+ **/
+
+/*# sourceMappingURL=site.css.map */

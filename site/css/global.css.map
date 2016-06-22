@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AA4CA;;;IAGI;AC/CJ;;IAEI;ACFJ;;;;;;IAMI;ACNJ;;;;;;IAMI;ACNJ;;;;;IAKI;AAIH,sBAAW;EACV,OAAO,EAAE,YAAY;EACrB,eAAe,EAAE,IAAI;;ACXvB;;IAEI;ACFJ;;IAEI;ACFJ;;;;;IAKI",
-"sources": ["../scss/tools/_mixins.scss","../scss/global/_colours.scss","../scss/global/_typography.scss","../scss/global/_forms.scss","../scss/global/_navigation.scss","../scss/global/_page-footer.scss","../scss/global/_page-header.scss","../scss/global/_structure.scss"],
-"names": [],
-"file": "global.css"
-}
