@@ -45,9 +45,7 @@ class Page_Controller extends ContentController {
 		if( Director::isLive() ){
 			Requirements::css('site/production/site.min.css');
 		}else{
-			Requirements::css('site/css/global.css');
-			Requirements::css('site/css/components.css');
-			Requirements::css('site/css/pages.css');
+			Requirements::css('site/production/site.css');
 		}
 	}
 }
