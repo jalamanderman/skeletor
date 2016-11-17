@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="<% if URLSegment == 'Security' %>login-page<% end_if %>">
+<html lang="en" class="<% if URLSegment == 'Security' %>security-page<% end_if %>">
 <head>
 
 	<% base_tag %>

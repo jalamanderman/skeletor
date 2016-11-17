@@ -1,0 +1,53 @@
+/**
+ * Colours
+ **/
+
+$black: #000000;
+$white: #FFFFFF;
+$blue: #06b8e4;
+$orange: #ffa619;
+$grey: #BBBBBB;
+$light_grey: #EEEEEE;
+$green: #69bd45;
+$yellow: #ffd02c;
+$red: #fb4540;
+
+.black-text { 				color: $black !important; }
+.blue-text { 				color: $blue !important; }
+.grey-text {				color: $grey !important; }
+.green-text {				color: $green !important; }
+.yellow-text {				color: $yellow !important; }
+.red-text {					color: $red !important; }
+
+.black-background { 		background-color: $black !important; }
+.blue-background { 			background-color: $blue !important; }
+.grey-background {			background-color: $grey !important; }
+.green-background {			background-color: $green !important; }
+.yellow-background {		background-color: $yellow !important; }
+.red-background {			background-color: $red !important; }
+
+
+/**
+ * Ease between states
+ * Use this to smooth hover/active/focus events
+ **/ 
+@mixin animate( $duration: 0.2s, $easing: ease-in-out ){
+	-webkit-transition: all $duration $easing;
+	   -moz-transition: all $duration $easing;
+		 -o-transition: all $duration $easing;
+		    transition: all $duration $easing; 
+}
+
+/**
+ * Multi-column
+ * @param $cols int = number of columns to span
+ * @param $sum int = total number of columns
+ * @param $gap rem = gap between items
+ **/
+@mixin col($cols, $sum, $gap: 1rem){
+	width: percentage($cols/$sum);
+	display: block;
+	float: left;
+	box-sizing: border-box;
+	padding: 0 $gap;
+}
