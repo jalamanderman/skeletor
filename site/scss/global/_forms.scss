@@ -1,8 +1,60 @@
-/** 
- * General form styles
- *
- * These styles will be accommodated by default on all forms, so keep the selectors
- * (ie .field.text) generic. For a unique form (ie login form) create a new file in the
- * format /components/_form-myform.scss.
- **/
- 
+/*
+--- CLIENT
+--- Editor stylesheet
+--- By James Barnsley
+*/
+
+input,
+select,
+textarea,
+option,
+button {
+	font-family: 'Open Sans', serif;
+	font-size: 14px;
+	padding: 10px 16px;
+	box-sizing: border-box;
+}
+
+.field {
+	padding-bottom: 15px;
+
+	&.text {
+		input {
+			border: 1px solid transparent;
+			&:focus,
+			&:active {
+				border-color: $blue;
+			}
+		}
+	}
+}
+
+button,
+.button,
+input[type="submit"] {
+	@include animate();
+	background: $blue;
+	color: #FFFFFF;
+	cursor: hand;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: 0;
+}
+
+button:hover,
+.button:hover,
+input[type="submit"]:hover {
+	background: darken($blue, 10%);
+}
+
+::-webkit-input-placeholder {	color: rgba(0,0,0,0.25); }
+:-moz-placeholder {				color: rgba(0,0,0,0.25); }
+::-moz-placeholder {			color: rgba(0,0,0,0.25); }
+:-ms-input-placeholder {		color: rgba(0,0,0,0.25); }
+
+
+
+
