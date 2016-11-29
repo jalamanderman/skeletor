@@ -6,13 +6,12 @@ class Page extends SiteTree {
 	private static $has_one = array();
 	
 	public function getCMSFields(){	
-		$fields = parent::getCMSFields();
-		
+		$fields = parent::getCMSFields();		
 		return $fields;
 	}
 	
 	/**
-	 * Get this object's controller
+	 * Get this model's controller
 	 * @return obj
 	 */
 	public function MyController(){
@@ -33,7 +32,7 @@ class Page_Controller extends ContentController {
 	public function init() {	
 		parent::init();
 		
-		// global javascript requirements
+		// global compiled javascript
 		if( Director::isLive() ){
 			Requirements::javascript('site/production/index.min.js');
 		}else{

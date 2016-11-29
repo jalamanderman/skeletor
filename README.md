@@ -6,15 +6,16 @@ This is the base platform for new installs on the SilverStripe framework. It ind
 ## Requirements
 
 - Node Package Manager (npm) (https://www.npmjs.com/)
-- GruntJS (http://gruntjs.com/)
+- Webpack (https://webpack.github.io/)
 - SilverStripe 3.2
 
 
 ## Environment setup
 
 1. `sudo apt-get update` to update package sources
-2. `sudo apt-get install npm` to install npm
-3. `sudo npm install -g grunt` to install grunt
+2. Install composer from https://getcomposer.org/download/
+3. `sudo mv ./composer.phar /usr/local/composer` to make composer globally accessible
+4. `sudo apt-get install npm` to install npm
 
 
 ## Installation
@@ -24,4 +25,4 @@ This is the base platform for new installs on the SilverStripe framework. It ind
 3. `composer install` to compile your PHP dependencies with Composer 
 4. `npm install` compile your Javascript dependencies with NPM 
 5. `/dev/build?flush=all` to build your SilverStripe environment 
-6. `grunt` to watch for sass and js file changes or `grunt &` to run in the background
+6. `npm run dev` to build a development version of your project, or `npm run prod` to build a production-ready version

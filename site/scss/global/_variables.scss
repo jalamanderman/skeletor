@@ -4,10 +4,10 @@
 
 $black: #000000;
 $white: #FFFFFF;
-$blue: #06b8e4;
-$orange: #ffa619;
 $grey: #BBBBBB;
 $light_grey: #EEEEEE;
+$blue: #06b8e4;
+$orange: #ffa619;
 $green: #69bd45;
 $yellow: #ffd02c;
 $red: #fb4540;
@@ -38,6 +38,19 @@ $red: #fb4540;
 		    transition: all $duration $easing; 
 }
 
+
+/**
+ * Clearfix
+ **/
+@mixin clearfix(){
+	&::after {
+		content: '';
+		clear: both;
+		display: block;
+	}
+}
+
+
 /**
  * Multi-column
  * @param $cols int = number of columns to span
@@ -50,6 +63,14 @@ $red: #fb4540;
 	float: left;
 	box-sizing: border-box;
 	padding: 0 $gap;
+
+	&:first-of-type {
+		padding-left: 0;
+	}
+
+	&:last-of-type {
+		padding-right: 0;
+	}
 }
 
 /**

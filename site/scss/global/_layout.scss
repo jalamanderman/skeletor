@@ -10,3 +10,14 @@ main {
 aside {
 	@include col(1,3,20px)	
 }
+
+.table {	
+	.row {
+		@include clearfix();
+		
+		&.heading {
+			font-weight: bold;
+			border-bottom: 1px solid $light_grey;
+		}
+	}
+}
