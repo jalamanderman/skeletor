@@ -5,15 +5,6 @@
 	$Content
 	$Form
 
-	<section class="demo-cols">
-		<div class="row">
-			<div class="col">Yeah</div>
-			<div class="col">Nah</div>
-			<div class="col">Yes</div>
-			<div class="col">Ok</div>
-		</div>
-	</section>
-
 </main>
 
 <aside class="typography">
@@ -21,7 +12,7 @@
 	<h2>Side bar</h2>
 
 	<nav>
-		<% loop Menu(2) %>
+		<% loop Menu(1) %>
 			<a href="{$Link}">{$MenuTitle.XML}</a>
 		<% end_loop %>
 	</nav>

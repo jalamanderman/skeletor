@@ -21,17 +21,10 @@
     "file-loader": "*",
     "expose-loader": "*",
 
-    "jquery": "3.0.0",
-
-    "babel-loader": "*",
-    "babel-core": "*",
-    "babel-preset-es2015": "*",
-    "babel-preset-react": "*",
-    "react": "15.1.0",
-    "react-dom": "15.1.0"
+    "jquery": "3.0.0"
   },
   "scripts": {
-    "dev": "NODE_ENV=development webpack --progress",
-    "prod": "NODE_ENV=production webpack"
+    "dev": "NODE_ENV=development webpack --watch",
+    "prod": "NODE_ENV=production webpack --watch"
   }
 }
