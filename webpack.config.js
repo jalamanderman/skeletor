@@ -43,7 +43,7 @@ var config = {
 			},
 			{
 				// load external resources (ie Google fonts)
-				test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
+				test: /.(png|woff(2)?|eot|ttf|svg|jpg|jpeg|gif)(\?[a-z0-9=\.]+)?$/,
 				loader: 'url-loader?limit=100000'
 			}
 		]
