@@ -13,6 +13,7 @@
 	},
 	"minimum-stability": "dev",
 	"scripts": {
-		"post-update-cmd": "GDM\\SSAutoGitIgnore\\UpdateScript::Go"
+		"post-update-cmd": "GDM\\SSAutoGitIgnore\\UpdateScript::Go",
+	    "post-install-cmd": "post-install.sh"
 	}
 }

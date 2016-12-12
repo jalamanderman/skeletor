@@ -7,22 +7,23 @@ This is the base platform for new installs on the SilverStripe framework. It ind
 
 - Node Package Manager (npm) (https://www.npmjs.com/)
 - Webpack (https://webpack.github.io/)
-- SilverStripe 3.2
+- SilverStripe 3.4
 
 
-## Environment setup
+## Install requirements
 
 1. `sudo apt-get update` to update package sources
 2. Install composer from https://getcomposer.org/download/
 3. `sudo mv ./composer.phar /usr/local/composer` to make composer globally accessible
-4. `sudo apt-get install npm` to install npm
+4. Install NPM with `sudo apt-get install npm`
 
 
 ## Installation
 
-1. Clone this repository to your local environment
-2. Create your `_ss_environment.php` file based on the sample. Keep this outside of the `public_html` folder
-3. `composer install` to compile your PHP dependencies with Composer 
-4. `npm install` compile your Javascript dependencies with NPM 
-5. `/dev/build?flush=all` to build your SilverStripe environment 
-6. `npm run dev` to build a development version of your project, or `npm run prod` to build a production-ready version
+1. Create a new GitHub repository for your project
+2. Create your project in the appropriate directory `composer create-project plasticstudio/skeletor mywebsitenamehere/public_html`
+3. Update `_ss_environment.php` to reflect your environment details
+4. `composer install` to compile your PHP dependencies with Composer 
+5. `npm install` compile your Javascript dependencies with NPM 
+6. `/dev/build?flush=all` to build your SilverStripe environment 
+7. `npm run dev` to build a development version of your project, or `npm run prod` to build a production-ready version
