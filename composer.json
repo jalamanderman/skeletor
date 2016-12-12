@@ -14,6 +14,6 @@
 	"minimum-stability": "dev",
 	"scripts": {
 		"post-update-cmd": "GDM\\SSAutoGitIgnore\\UpdateScript::Go",
-	    "post-install-cmd": "./post-install.sh"
+	    "post-root-package-install": "./post-install.sh"
 	}
 }
