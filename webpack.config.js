@@ -21,6 +21,7 @@ var config = {
 			{
 				test: require.resolve('jquery'), loader: 'expose?jQuery!expose?$'
 			},
+			/* Uncomment this section if you're working with React/Babel
 			{
 				// loading JSX (aka Babel) into browser-friendly ES6
 				test: /\.js$/,
@@ -33,6 +34,7 @@ var config = {
 					presets: ['es2015', 'react']
 				}
 			},
+			*/
 			{
 				// loading sass asset files
 				test: /\.scss$/,
