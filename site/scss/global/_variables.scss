@@ -81,16 +81,41 @@ $red: #fb4540;
  * @param $row_gap percent = gap between row (optional, defaults to 2%)
  **/
 @mixin grid( $cols, $col_gap: 2%, $row_gap: 2% ){
+
 	width: ( 0% + ( 100 / $cols ) - ( $col_gap * 2 ) + ( ( $col_gap * 2 ) / $cols ) );
 	box-sizing: border-box;
-	margin: 0 $row_gap $row_gap;
 
-	&:nth-child(#{$cols}n-#{$cols}) {
-		margin-right: 0;
-		@include clearfix;
+	margin: 0 $col_gap;
+	
+	// reset previously defined margins (at higher breakpoints)
+	&:nth-of-type(n) {
+		margin: 0 $col_gap;
+		&:after{clear: none;}
 	}
 
-	&:nth-child(#{$cols}n-#{$cols - 1}) {
+	// first of row
+	&:nth-of-type(#{$cols}n+1) {
 		margin-left: 0;
+	}
+
+	// handle first of row if there are less than $col
+	&:first-of-type {
+		margin-left: 0;
+	}
+
+
+	// last of row
+	&:nth-of-type(#{$cols}n) {
+		margin-right: 0;
+		margin-bottom: $row_gap;
+		position: relative;
+		&:after{
+			clear: both;
+		}
+	}
+
+	// Remove unneeded margin-bottom from the last item.
+	&:last-of-type {
+		margin-bottom: 0;
 	}
 }
