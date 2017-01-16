@@ -1,20 +1,27 @@
+<section class="page cf">
 
-<main class="typography">
+	<div class="inner">
 
-	<h1>$Title</h1>
-	$Content
-	$Form
+		<main class="typography">
 
-</main>
+			<h1>$Title</h1>
+			$Content
+			$Form
 
-<aside class="typography">
+		</main>
 
-	<h2>Side bar</h2>
+		<aside class="typography">
 
-	<nav>
-		<% loop Menu(1) %>
-			<a href="{$Link}">{$MenuTitle.XML}</a>
-		<% end_loop %>
-	</nav>
+			<h2>Side bar</h2>
 
-</aside>
+			<nav>
+				<% loop Menu(1) %>
+					<a href="{$Link}">{$MenuTitle.XML}</a>
+				<% end_loop %>
+			</nav>
+
+		</aside>
+
+	</div>
+
+</section>
