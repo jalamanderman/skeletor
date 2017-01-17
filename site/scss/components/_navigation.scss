@@ -2,3 +2,28 @@
 /**
  * NAV PRIMARY
  **/
+
+ nav {
+
+	&.mainnav {
+		li {
+			display: inline-block;
+			margin-right: 10px;
+			&.last {
+				margin-right: 0;
+			}
+
+			a {
+				padding: 10px;
+				display: block;
+				text-decoration: none;
+				color: $white;
+				background: $blue;
+				&:hover, &.current, &.section {
+					background: $orange;
+				}
+			}
+		}
+	}
+	
+}

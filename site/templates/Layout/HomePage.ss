@@ -1,4 +1,4 @@
-<section class="page">
+<section class="page cf">
 
 	<div class="inner">
 	
@@ -53,6 +53,35 @@
 					<div class="col">
 						<p>Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
 					</div>
+				</div>
+
+			</section>
+
+			<section class="grid">
+
+				<div class="item left">
+					<h3>Grid item 1</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel congue ipsum. Mauris eget lectus erat. Aliquam ac efficitur turpis.</p>
+				</div>
+
+				<div class="item left">
+					<h3>Grid item 2</h3>
+					<p>Nunc enim nunc, consectetur et efficitur eget, consectetur eget purus. Cras et ex ut orci congue tincidunt. In hac habitasse platea dictumst. Integer sollicitudin ultricies auctor.</p>
+				</div>
+
+				<div class="item left">
+					<h3>Grid item 3</h3>
+					<p>Nulla ante ligula, pellentesque egestas libero non, efficitur consectetur nibh. Nam a viverra arcu, a blandit eros.</p>
+				</div>
+
+				<div class="item left">
+					<h3>Grid item 4</h3>
+					<p>Duis vulputate scelerisque tempus. Fusce at ornare lorem. Ut sit amet urna turpis. Maecenas consequat nunc justo, quis varius odio viverra vel.</p>
+				</div>
+
+				<div class="item left">
+					<h3>Grid item 5</h3>
+					<p>Morbi maximus elit nec diam lobortis convallis. Etiam odio turpis, fermentum sit amet ex non, facilisis lobortis libero.</p>
 				</div>
 
 			</section>

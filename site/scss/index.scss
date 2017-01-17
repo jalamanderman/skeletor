@@ -15,9 +15,11 @@
  **/
 @import 'global/reset';
 @import 'global/variables';
+@import 'global/mixins';
 @import 'global/layout';
 @import 'global/typography';
 @import 'global/forms';
+
 
 
 /**
@@ -36,3 +38,5 @@
  * These should match the class of said page (ie HomePage = homepage, Contact = contact)
  **/
 @import 'pages/homepage';
+
+@import 'global/responsive';

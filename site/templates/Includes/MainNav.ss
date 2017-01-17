@@ -3,17 +3,17 @@
 	<ul class="menu">
 		<% loop Menu(1) %>
 			
-			<li class="$LinkingMode level-1 pos-$Pos">
+			<li class="level-1 pos-$Pos $FirstLast">
 			
-				<a href="$Link" accesskey="$Pos">$MenuTitle.XML</a>
+				<a href="$Link" class="$LinkingMode" accesskey="$Pos">$MenuTitle.XML</a>
 				
 				<% if Children %>
 					
 					<ul class="menu secondary">
 						<% loop Children %>
 							
-							<li class="$LinkingMode level-2 pos-$Pos cf">
-								<a href="$Link" class="$FirstLast cf">$MenuTitle.XML</a>
+							<li class="level-2 pos-$Pos cf $FirstLast">
+								<a href="$Link" class="$LinkingMode $FirstLast cf">$MenuTitle.XML</a>
 							</li>
 							
 						<% end_loop %>

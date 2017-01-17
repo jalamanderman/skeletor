@@ -20,6 +20,14 @@ aside {
 	@include clearfix();
 }
 
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
 .table {	
 	.row {
 		@include clearfix();
@@ -28,5 +36,14 @@ aside {
 			font-weight: bold;
 			border-bottom: 1px solid $light_grey;
 		}
+	}
+}
+
+footer {
+
+	&.page-footer {
+		padding: 2em 0;
+		margin-top: 2em;
+		border-top: 1px solid $light_grey;
 	}
 }
