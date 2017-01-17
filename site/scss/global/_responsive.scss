@@ -62,6 +62,22 @@
 }
 
 @media all and (max-width: 600px) {
+
+	section {
+		.row {
+			.col {
+				@include col(1,1)
+			}
+		}
+	}
+
+	section {
+		&.grid {
+			.item {
+				@include grid( $cols: 1, $col_gap: 2%)
+			}
+		}
+	}
 	
 }
 
