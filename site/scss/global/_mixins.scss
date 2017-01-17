@@ -125,14 +125,14 @@
 /**
  * [transition description]
  * @param  {[style]} $propertie [The style you want to animate. Defaults to 'all'.]
- * @param  {[int in seconds]} $time      [The speep at which you want the transition to take. Defaults to '0.3s'.]
+ * @param  {[int in seconds]} $time      [The speed at which you want the transition to take. Defaults to '0.3s'.]
  * @param  {[movement type]} $mode      [The type of movement you want eg: linear, ease, ease-in, ease-out. Defaults to 'linear'.]
  */
-@mixin transition($propertie: all, $time: 0.3s, $mode: linear){
-	-webkit-transition: $propertie $time $mode;
-	-moz-transition: $propertie $time $mode;
-	-o-transition: $propertie $time $mode;
-	transition: $propertie $time $mode;
+@mixin transition($property: all, $time: 0.3s, $mode: linear){
+	-webkit-transition: $property $time $mode;
+	-moz-transition: $property $time $mode;
+	-o-transition: $property $time $mode;
+	transition: $property $time $mode;
 }
 
 //	Background image - no repeat, centered, cover
@@ -162,7 +162,7 @@
  * Creates a grid of items that have a fixed height
  * @param $cols int = number of items per row
  * @param $col_gap percent = gap between items in each row (optional, defaults to 2%)
- * @param $row_gap percent = gap between row (optional, defaults to 2%)
+ * @param $row_gap percent = gap between row (optional, defaults to two times col_gap (4%))
  **/
 @mixin grid( $cols, $col_gap: 2%, $row_gap: false ){
 	@if $row_gap == false{

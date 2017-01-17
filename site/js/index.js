@@ -18,7 +18,7 @@ function PageSetup(){
 }
 
 function MobileNav(){
-    $('.mobNavBtn').click( function(){
+    $('.hamburglar').click( function(){
     	$(this).toggleClass('open');
         $('.mainnav').slideToggle();
     });
