@@ -11,6 +11,35 @@
 }
 
 @media all and (max-width: 800px) {
+	
+	/* navigation */
+	.mobNavBtn {
+		display: block;
+	}
+
+	nav {
+		&.mainnav {
+			display: none;
+
+			li {
+				display: block;
+				margin: 0;
+				 a {
+				 	background: $light_grey;
+				 	color: $black;
+				 	border-bottom: 1px solid $grey;
+
+				 	&:hover,
+				 	&.current,
+				 	&.section {
+				 		background: $grey;
+				 	}
+				 }
+			}
+		}
+
+	}
+
 	section {
 		.row {
 			.col {
@@ -22,7 +51,7 @@
 	section {
 		&.grid {
 			.item {
-				@include grid( $cols: 2, $col_gap: 2%, $row_gap: 2% )
+				@include grid( $cols: 2, $col_gap: 2%)
 			}
 		}
 	}

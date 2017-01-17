@@ -27,3 +27,7 @@
 	
 </head>
 <body class="$ClassName">
+
+<span class="mobNavBtn">
+	<i class="fa fa-bars" aria-hidden="true"></i>
+</span>

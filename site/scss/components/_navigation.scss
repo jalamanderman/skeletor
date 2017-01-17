@@ -25,5 +25,16 @@
 			}
 		}
 	}
-	
+
+}
+
+.mobNavBtn {
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	display: none;
+	.fa {
+		font-size: 2em;
+		cursor: pointer;
+	}
 }

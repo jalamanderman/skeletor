@@ -4,5 +4,22 @@
 // compiles into the necessary css files
 require('../scss/index.scss');
 
-// Start your website!
-console.log('Loaded!');
+/**
+ * On page load
+ **/
+$(document).ready( function(){
+	// Start your website!
+	console.log('Loaded!');
+	PageSetup();
+});
+
+function PageSetup(){
+    MobileNav();
+}
+
+function MobileNav(){
+    $('.mobNavBtn').click( function(){
+    	$(this).toggleClass('open');
+        $('.mainnav').slideToggle();
+    });
+}
