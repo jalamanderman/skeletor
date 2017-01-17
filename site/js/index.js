@@ -15,11 +15,24 @@ $(document).ready( function(){
 
 function PageSetup(){
     MobileNav();
+    ToggleContent();
 }
 
 function MobileNav(){
     $('.hamburglar').click( function(){
     	$(this).toggleClass('open');
         $('.mainnav').slideToggle();
+    });
+}
+
+function ToggleContent(){
+    $('.toggle-button').click(function(e){
+    	e.preventDefault();
+        $(this).parent('.togglable').children('.togglable-content').slideToggle(200);
+        $(this).toggleClass('open');
+        if( $(this).children('.fa').length ){
+        	$(this).children('.fa').toggleClass('fa-plus');
+        	$(this).children('.fa').toggleClass('fa-minus');
+        }
     });
 }

@@ -9,6 +9,7 @@
 		li {
 			display: inline-block;
 			margin-right: 10px;
+			position: relative;
 			&.last {
 				margin-right: 0;
 			}
@@ -19,8 +20,45 @@
 				text-decoration: none;
 				color: $white;
 				background: $blue;
+				position: relative;
 				&:hover, &.current, &.section {
 					background: $orange;
+				}
+
+				&.toggle-button {
+					padding-right: 2em;
+					.fa {
+						position: absolute;
+						right: 0.5em;
+						height: 1em;
+						width: 1em;
+						line-height: 1.5em;
+						font-size: 1em;
+					}
+				}
+			}
+
+			.menu.level-2 {
+				position: absolute;
+				display: none;
+				background: $light_grey;
+				min-width: 100%;
+				li {
+					display: block;
+					margin: 0;
+					a {
+						display: block;
+						white-space: nowrap;
+						background: $light_grey;
+						color: $black;
+						border-bottom: 1px solid $white;
+					}
+				}
+			}
+
+			&:hover {
+				.menu.level-2 {
+					/*display: block;*/
 				}
 			}
 		}
@@ -29,7 +67,7 @@
 }
 
 .hamburglar {
-    display: block;
+    display: none;
 	width: 35px;
 	height: 35px;
 	position: absolute;
@@ -57,7 +95,7 @@
 		span { background: $blue; }
 		span:nth-child(2) {
 			opacity: 0;
-			height: 0;
+			width: 0;
 
 		}
 		span:nth-child(1) {

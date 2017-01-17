@@ -13,7 +13,7 @@
 @media all and (max-width: 800px) {
 	
 	/* navigation */
-	.mobNavBtn {
+	.hamburglar {
 		display: block;
 	}
 
@@ -24,17 +24,21 @@
 			li {
 				display: block;
 				margin: 0;
-				 a {
-				 	background: $light_grey;
-				 	color: $black;
-				 	border-bottom: 1px solid $grey;
+				a {
+					background: $light_grey;
+					color: $black;
+					border-bottom: 1px solid $grey;
 
-				 	&:hover,
-				 	&.current,
-				 	&.section {
-				 		background: $grey;
-				 	}
-				 }
+					&:hover,
+					&.current,
+					&.section {
+						background: $grey;
+					}
+				}
+
+				.menu.level-2 {
+					position: relative;
+				}
 			}
 		}
 
