@@ -3,6 +3,9 @@
  * General layout
  **/
 
+body{
+}
+
 main {
 	@include col(2,3,20px)
 }
