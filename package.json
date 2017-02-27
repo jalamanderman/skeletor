@@ -9,17 +9,17 @@
     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
   },
   "devDependencies": {
-    "webpack": "1.13.2",
-    "webpack-strip": "*",
-    "node-sass": "*",
-    "extract-text-webpack-plugin": "*",
+    "webpack": "2.2.1",
+    "webpack-strip": "0.1.0",
+    "node-sass": "4.5.0",
+    "extract-text-webpack-plugin": "2.0.0",
     
-    "sass-loader": "*",
-    "style-loader": "*",
-    "css-loader": "*",
-    "url-loader": "*",
-    "file-loader": "*",
-    "expose-loader": "*",
+    "sass-loader": "6.0.2",
+    "style-loader": "0.13.2",
+    "css-loader": "0.26.2",
+    "url-loader": "0.5.8",
+    "file-loader": "0.10.1",
+    "expose-loader": "0.7.3",
 
     "jquery": "3.0.0"
   },

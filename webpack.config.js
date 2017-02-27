@@ -19,7 +19,7 @@ var config = {
 	module: {
 		loaders: [
 			{
-				test: require.resolve('jquery'), loader: 'expose?jQuery!expose?$'
+				test: require.resolve('jquery'), loader: 'expose-loader?jQuery!expose-loader?$'
 			},
 			/* Uncomment this section if you're working with React/Babel
 			{
@@ -38,10 +38,10 @@ var config = {
 			{
 				// loading sass asset files
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract([
-					'css'+(dev? '?sourceMap=true': ''),
-					'sass'+(dev? '?outputStyle=expanded&sourceMap=true&sourceMapContents=true': '')
-				])
+				loaders: ExtractTextPlugin.extract({
+						fallback: 'style-loader',
+						use: [(dev? 'css-loader?sourceMap': 'css-loader'), (dev? 'sass-loader?sourceMap': 'sass-loader')]
+				})
 			},
 			{
 				// load external resources (ie Google fonts)
@@ -52,8 +52,7 @@ var config = {
 	},
 	
 	plugins: [
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.ProvidePlugin({
 		    $: "jquery",
 		    jQuery: "jquery",
