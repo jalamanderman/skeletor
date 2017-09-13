@@ -9,7 +9,6 @@
 		"undefinedoffset/sortablegridfield": "dev-master",
 		"unclecheese/betterbuttons": "1.3.14",
 		"plasticstudio/dev-tools": "dev-master",
-		"plasticstudio/silverstripe-contact": "dev-master",
 		"gdmedia/ss-auto-git-ignore": "0.0.3"
 	},
 	"minimum-stability": "dev",
