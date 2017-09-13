@@ -14,11 +14,12 @@ composer.lock
 /betterbuttons/
 /cms/
 /dev-tools/
-/fontawesome-iconpickerfield/
 /framework/
+/gridfieldextensions/
 /gridfieldextensions/
 /reports/
 /segment-field/
+/silverstripe-contact/
 /siteconfig/
 /sortablegridfield/
 /userforms/

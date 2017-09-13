@@ -67,7 +67,7 @@ class Page_Controller extends ContentController {
 	 *                            	'SourceLink' => 'Link to page email was sent from (defaults to $this->Link)'
 	 *                            )
 	 *                            
-	 */
+	 
 	function EmailAdmin($TemplateData=array()){
 
 		// can only send if AdminEmails have been set
@@ -103,7 +103,7 @@ class Page_Controller extends ContentController {
 
 		}
 		
-	}
+	}*/
 
 	/**
 	 * Send email to form submitter
@@ -124,7 +124,7 @@ class Page_Controller extends ContentController {
 	 *                            	'SourceLink' => 'Link to page email was sent from (defaults to $this->Link)'
 	 *                            )
 	 *                            
-	 */
+	 
 	function SubmitterAdmin($TemplateData=array()){
 
 		// can only send if AdminEmails have been set
@@ -159,7 +159,7 @@ class Page_Controller extends ContentController {
 
 		}
 		
-	}
+	}*/
 
 
 }
