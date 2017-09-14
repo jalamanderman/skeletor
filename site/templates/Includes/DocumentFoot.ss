@@ -1,5 +1,5 @@
 
-    $DebugTools
+    $DebugInfo
 
 </body>
 </html>
