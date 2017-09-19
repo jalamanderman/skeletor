@@ -75,22 +75,22 @@ class ContactPage_Controller extends Page_Controller {
 			
 		}else{
 	
-			$fields = new FieldList(
-				new TextField('Name', 'Name'),
-				new EmailField('Email', 'Email'),
-				new TextField('Phone', 'Phone'),
-				new TextareaField('Message', 'Message'),
-				new HiddenField('ContactPageID', null, $this->ID)
+			$fields = FieldList::create(
+				TextField::create('Name', 'Name'),
+				EmailField::create('Email', 'Email'),
+				TextField::create('Phone', 'Phone'),
+				TextareaField::create('Message', 'Message'),
+				HiddenField::create('ContactPageID', null, $this->ID)
 			);
 			
-			$actions = new FieldList(
-				new FormAction('doContactForm', 'Submit')
+			$actions = FieldList::create(
+				FormAction::create('doContactForm', 'Submit')
 			);
 			
 			// Validate required fields
-			$validator = new RequiredFields('Name', 'Email','Phone', 'Message');
+			$validator = RequiredFields::create('Name', 'Email','Phone', 'Message');
 			
-			$form = new Form($this, 'ContactForm', $fields, $actions, $validator);
+			$form = Form::create($this, 'ContactForm', $fields, $actions, $validator)->addExtraClass('contact-form');
 			
 			return $form;
 

@@ -19,7 +19,7 @@
 					$Intro
 				</div>
 
-				<table cellpadding="5" cellspacing="0" border="0" bgcolor="#ffffff" style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
+				<table cellpadding="5" cellspacing="0" border="0" bgcolor="#FFFFFF" style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
 					<% loop Data %>
 						<% if IsHeading %>
 							<tr>
