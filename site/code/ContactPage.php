@@ -7,8 +7,8 @@ class ContactPage extends Page {
 		'FromEmail'=> 'Varchar(255)',
 		'FromName'=> 'Varchar(255)',
 		'ContactDetails'=> 'HTMLText',
-		'OnCompletionMessage'=> 'HTMLText'/*,
-		'LatLong'=> 'Varchar(255)'*/
+		'OnCompletionMessage'=> 'HTMLText',
+		'SendCustomerEmail'=> 'Boolean'
     );
 
     private static $has_many = array(
@@ -24,16 +24,17 @@ class ContactPage extends Page {
 		
 		// ContactDetails tab
 		//$fields->addFieldToTab('Root.ContactDetails', new TextField('LatLong', 'Lat/Long coordinates<br/><em>For Google map</em>'));
-		$fields->addFieldToTab('Root.ContactDetails', new HTMLEditorField('ContactDetails', 'Contact details'));
+		$fields->addFieldToTab('Root.ContactDetails', HTMLEditorField::create('ContactDetails', 'Contact details'));
 		
 		// Emails tab
-		$fields->addFieldToTab('Root.Emails', new TextareaField('ToEmail', '"To" Email<br/><em>Email addresses to deliver form submissions to. Can be comma-separated list.</em>'));
-		$fields->addFieldToTab('Root.Emails', new TextField('FromEmail', '"From" & "Reply-to" Email<br/><em>Displayed in form submission email.</em>'));
-		$fields->addFieldToTab('Root.Emails', new TextField('FromName', 'From name<br/><em>Displayed in form submission email. Defaults to "'.SiteConfig::current_site_config()->Title.' contact form".</em>'));
+		$fields->addFieldToTab('Root.Emails', TextareaField::create('ToEmail', '"To" Email<br/><em>Email addresses to deliver form submissions to. Can be comma-separated list.</em>'));
+		$fields->addFieldToTab('Root.Emails', TextField::create('FromEmail', '"From" & "Reply-to" Email<br/><em>Displayed in form submission email.</em>'));
+		$fields->addFieldToTab('Root.Emails', TextField::create('FromName', 'From name<br/><em>Displayed in form submission email. Defaults to "'.SiteConfig::current_site_config()->Title.' contact form".</em>'));
+		$fields->addFieldToTab('Root.Emails', CheckboxField::create('SendCustomerEmail', 'Send confirmation email to customer?'));
 		
 		// Submissions tab
         $GridFieldConfig = GridFieldConfig_RecordEditor::create();
-        $SubmissionsField = new GridField(
+        $SubmissionsField = GridField::create(
             'Submissions',
             'Submissions',
             $this->Submissions(),
@@ -42,7 +43,7 @@ class ContactPage extends Page {
         $fields->addFieldToTab('Root.Submissions', $SubmissionsField);
 		
 		// OnCompletion tab
-		$fields->addFieldToTab('Root.OnCompletion', new HTMLEditorField('OnCompletionMessage', 'Message to show after form submission'));
+		$fields->addFieldToTab('Root.OnCompletion', HTMLEditorField::create('OnCompletionMessage', 'Message to show after form submission'));
 		
         return $fields;
 		

@@ -26,7 +26,7 @@
 								<td colspan="2" style="vertical-align: top;">&nbsp;</td>
 							</tr>
 							<tr>
-								<td colspan="2" style="vertical-align: top; font-size: 16px; color: #84dc00;">
+								<td colspan="2" style="vertical-align: top; font-size: 16px; color: #BBBBBB;">
 									<strong>{$Value}</strong>
 								</td>
 							</tr>

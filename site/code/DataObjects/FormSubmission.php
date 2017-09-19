@@ -1,33 +1,4 @@
 <?php
-/*class FormSubmission extends DataObject {	
-		
-	static private $db = array(
-		'FormData' => 'Text',
-		'Name' => 'Varchar(255)',
-		'Email' => 'Varchar(255)'
-	);
-		
-	static private $has_one = array(
-		'Page' => 'Page'
-	);
-	
-	static $summary_fields = array(
-		'Created' => 'Date',
-		'Name' => 'Name',
-		'Email' => 'Email'
-	);
-	
-	static $default_sort = 'Created DESC';
-	
-	public static $searchable_fields = array(
-		'Created',
-		'Name',
-		'Email'
-	);
-}*/
-
-
-
 class FormSubmission extends DataObject {
 	
 	private static $singular_name = 'Form submission';
@@ -115,8 +86,8 @@ class FormSubmission extends DataObject {
 
 			case 'ContactPage':
 				// --- ADMIN EMAIL ---
-				if( isset($this->Origin()->AdminEmail) ){
-					$to = $this->Origin()->AdminEmail;
+				if( isset($this->Origin()->ToEmail) ){
+					$to = $this->Origin()->ToEmail;
 				}else{
 					$to = $config->SendEmailsTo_Email;
 				}
@@ -151,13 +122,15 @@ class FormSubmission extends DataObject {
 				$email->populateTemplate( ArrayData::create($data) );
 				$email->send();
 
-				// --- CUSTOMER EMAIL ---
-				$to = '"'.$data->Name.'" <'.$data->Email.'>';
-				$data->Title = 'Thanks for your message, we\'ll be in touch soon. The details you submitted are included below for your own records.';
-				$email = Email::create($from, $to, $subject, $body);
-				$email->setTemplate('Emails/FormSubmission');
-				$email->populateTemplate( ArrayData::create($data) );
-				$email->send();
+				if($this->Origin()->SendCustomerEmail){
+					// --- CUSTOMER EMAIL ---
+					$to = '"'.$data->Name.'" <'.$data->Email.'>';
+					$data->Title = 'Thanks for your message, we\'ll be in touch soon. The details you submitted are included below for your own records.';
+					$email = Email::create($from, $to, $subject, $body);
+					$email->setTemplate('Emails/FormSubmission');
+					$email->populateTemplate( ArrayData::create($data) );
+					$email->send();
+				}
 
 				break;
 
@@ -173,13 +146,15 @@ class FormSubmission extends DataObject {
 				$email->populateTemplate( ArrayData::create($data) );
 				$email->send();
 
-				// --- CUSTOMER EMAIL ---
-				$to = '"'.$data->Name.'" <'.$data->Email.'>';
-				$data->Title = 'Thanks for your message, we\'ll be in touch soon. The details you submitted are included below for your own records.';
-				$email = Email::create($from, $to, $subject, $body);
-				$email->setTemplate('Emails/FormSubmission');
-				$email->populateTemplate( ArrayData::create($data) );
-				$email->send();
+				if($this->Origin()->SendCustomerEmail){
+					// --- CUSTOMER EMAIL ---
+					$to = '"'.$data->Name.'" <'.$data->Email.'>';
+					$data->Title = 'Thanks for your message, we\'ll be in touch soon. The details you submitted are included below for your own records.';
+					$email = Email::create($from, $to, $subject, $body);
+					$email->setTemplate('Emails/FormSubmission');
+					$email->populateTemplate( ArrayData::create($data) );
+					$email->send();
+				}
 		}
 
 		return;
