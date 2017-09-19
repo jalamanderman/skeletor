@@ -6,8 +6,16 @@ class SiteConfigExtension extends DataExtension {
 		'SendEmailsFrom_Name' => 'Text',
 		'SendEmailsFrom_Email' => 'Text'
 	);
+
+	static $has_one = array(
+		'Logo' => 'Image'
+	);
 	
-	public function updateCMSFields(FieldList $fields){	
+	public function updateCMSFields(FieldList $fields){
+
+		// GlobalAssets
+		$fields->addFieldToTab('Root.GlobalAssets', HeaderField::create('Site assets', 4));
+		$fields->addFieldToTab('Root.GlobalAssets', UploadField::create('Logo', 'Logo image')->setFolderName('GlobalAssets'));
 	
         $fields->addFieldToTab(
         	'Root.Emails', 
