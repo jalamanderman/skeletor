@@ -11,7 +11,9 @@
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="{$BaseHref}{$Link}?1" />
 	<meta property="og:title" content="$Title" />
+	<% if MetaDescription %>
 	<meta property="og:description" content="$MetaDescription" />
+	<% end_if %>
     
 	<% if OgImage %>
 		<meta property="og:image" content="$OgImage.AbsoluteURL" />

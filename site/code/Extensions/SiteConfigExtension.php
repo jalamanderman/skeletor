@@ -13,10 +13,11 @@ class SiteConfigExtension extends DataExtension {
 	
 	public function updateCMSFields(FieldList $fields){
 
-		// GlobalAssets
+		// Global assets
 		$fields->addFieldToTab('Root.GlobalAssets', HeaderField::create('Site assets', 4));
 		$fields->addFieldToTab('Root.GlobalAssets', UploadField::create('Logo', 'Logo image')->setFolderName('GlobalAssets'));
-	
+		
+		// Email settings
         $fields->addFieldToTab(
         	'Root.Emails', 
         	TextAreaField::create('SendEmailsTo_Email','Admin "To" email address(es)')
