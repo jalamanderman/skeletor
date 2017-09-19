@@ -5,7 +5,7 @@
 		
 			<div style="border-top: 30px solid #FFFFFF; text-align: center;">
 				<a href="{$AbsoluteDomain}" style="border: 0; text-decoration: none;">
-					<img src="{$AbsoluteDomain}site/images/email-logo.gif" title="IMPAC logo" />
+					<img src="{$AbsoluteDomain}site/images/email-logo.gif" title="Logo" />
 				</a>
 			</div>
 			
@@ -26,7 +26,7 @@
 								<td colspan="2" style="vertical-align: top;">&nbsp;</td>
 							</tr>
 							<tr>
-								<td colspan="2" style="vertical-align: top; font-size: 16px; color: #BBBBBB;">
+								<td colspan="2" style="vertical-align: top; font-size: 16px; color: #BBBBBB; border-bottom: 1px solid #EEEEEE;">
 									<strong>{$Value}</strong>
 								</td>
 							</tr>
