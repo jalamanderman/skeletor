@@ -16,7 +16,7 @@ class ContactPage extends Page {
     );
 	
 	static $description = 'Basic contact page';
-	static $icon = 'contact/images/contact-page';
+	static $icon = 'site/cms/icons/email.png';
 
     function getCMSFields(){
 	

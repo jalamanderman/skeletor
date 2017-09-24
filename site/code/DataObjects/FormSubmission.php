@@ -19,9 +19,11 @@ class FormSubmission extends DataObject {
 	
 	private static $summary_fields = array(
 		'Created' => 'Created',
+		'SubmitterName' => 'Name',
+		'SubmitterEmail' => 'Email',
 		'URL' => 'URL',
 		'OriginType' => 'Origin',
-		'IPAddress' => 'IP Address',
+		//'IPAddress' => 'IP Address',
 		'UniqueID' => 'UniqueID'
 	);
 
@@ -188,6 +190,32 @@ class FormSubmission extends DataObject {
 		}
 		$str .= '</ul>';
 		return $str;
+	}
+
+	/**
+	 * Retrieve and return particular attribute from Payload
+	 * @param str $attr Attribute to find and return
+	 */
+	function PayloadAttr($attr=null){
+		$data = json_decode($this->Payload);
+		if( $attr && isset($data->$attr) ){
+			return $data->$attr;
+		}
+
+	}
+
+	function SubmitterName(){
+		if( $Name = $this->PayloadAttr('Name') ){
+			return $Name;
+		}
+		return '(not set)';
+	}
+
+	function SubmitterEmail(){
+		if( $Email = $this->PayloadAttr('Email') ){
+			return $Email;
+		}
+		return '(not set)';
 	}
 
 }

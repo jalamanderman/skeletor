@@ -20,6 +20,8 @@
 				<% end_loop %>
 			</nav>
 
+			$ContactDetails
+
 		</aside>
 
 	</div>
