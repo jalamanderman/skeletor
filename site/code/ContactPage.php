@@ -27,9 +27,27 @@ class ContactPage extends Page {
 		$fields->addFieldToTab('Root.ContactDetails', HTMLEditorField::create('ContactDetails', 'Contact details'));
 		
 		// Emails tab
-		$fields->addFieldToTab('Root.Emails', TextareaField::create('ToEmail', '"To" Email<br/><em>Email addresses to deliver form submissions to. Can be comma-separated list.</em>'));
-		$fields->addFieldToTab('Root.Emails', TextField::create('FromEmail', '"From" & "Reply-to" Email<br/><em>Displayed in form submission email.</em>'));
-		$fields->addFieldToTab('Root.Emails', TextField::create('FromName', 'From name<br/><em>Displayed in form submission email. Defaults to "'.SiteConfig::current_site_config()->Title.' contact form".</em>'));
+		$fields->addFieldToTab(
+			'Root.Emails', 
+			TextareaField::create(
+				'ToEmail', 
+				'"To" email'
+			)->setDescription('Email addresses to deliver form submissions to. Can be comma-separated list.')
+		);
+		$fields->addFieldToTab(
+			'Root.Emails', 
+			TextField::create(
+				'FromEmail', 
+				'"From" & "Reply-to" email'
+			)->setDescription('Displayed in form submission email.')
+		);
+		$fields->addFieldToTab(
+			'Root.Emails', 
+			TextField::create(
+				'FromName', 
+				'From name'
+			)->setDescription('Displayed in form submission email. Defaults to "'.SiteConfig::current_site_config()->Title.' contact form."')
+		);
 		$fields->addFieldToTab('Root.Emails', CheckboxField::create('SendCustomerEmail', 'Send confirmation email to customer?'));
 		
 		// Submissions tab
