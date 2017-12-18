@@ -10,7 +10,7 @@
     	max-width: 500px;
     	border: 0;
     	padding: 30px;
-    	background: $light_grey;
+    	background: colour(light_grey);
 
     	.field {
     		&.text {
@@ -33,7 +33,7 @@
     		display: inline-block;
     		a {
     			display: inline-block;
-				background: $grey;
+				background: colour(grey);
 				color: #FFFFFF;
 				cursor: hand;
 				cursor: pointer;
@@ -46,7 +46,7 @@
 				border: 0;
 
 				&:hover {
-					background: darken($grey, 10%);
+					background: darken(colour(grey), 10%);
 				}
     		}
     	}

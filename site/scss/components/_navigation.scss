@@ -18,11 +18,11 @@
 				padding: 10px;
 				display: block;
 				text-decoration: none;
-				color: $white;
-				background: $blue;
+				color: colour(white);
+				background: colour(blue);
 				position: relative;
 				&:hover, &.current, &.section {
-					background: $orange;
+					background: colour(orange);
 				}
 
 				&.toggle-button {
@@ -41,7 +41,7 @@
 			.menu.level-2 {
 				position: absolute;
 				display: none;
-				background: $light_grey;
+				background: colour(light_grey);
 				min-width: 100%;
 				li {
 					display: block;
@@ -49,11 +49,11 @@
 					a {
 						display: block;
 						white-space: nowrap;
-						background: $light_grey;
-						color: $black;
-						border-bottom: 1px solid $white;
+						background: colour(light_grey);
+						color: colour(black);
+						border-bottom: 1px solid colour(white);
 						&:hover {
-							border-bottom: 1px solid $grey;
+							border-bottom: 1px solid colour(grey);
 						}
 					}
 				}
@@ -84,7 +84,7 @@
 		position: absolute;
 		height: 20%;
 		width: 100%;
-		background: $black;
+		background: colour(black);
 		opacity: 1;
 		@include rotate(0deg);
 		@include transition($property: all, $time: 0.25s, $mode: ease-in-out);
@@ -95,7 +95,7 @@
 	}
 	
 	&.open {
-		span { background: $blue; }
+		span { background: colour(blue); }
 		span:nth-child(2) {
 			opacity: 0;
 			width: 0;

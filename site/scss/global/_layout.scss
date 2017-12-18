@@ -37,7 +37,7 @@ aside {
 		
 		&.heading {
 			font-weight: bold;
-			border-bottom: 1px solid $light_grey;
+			border-bottom: 1px solid colour(light_grey);
 		}
 	}
 }
@@ -47,6 +47,92 @@ footer {
 	&.page-footer {
 		padding: 2em 0;
 		margin-top: 2em;
-		border-top: 1px solid $light_grey;
+		border-top: 1px solid colour(light_grey);
 	}
+}
+
+/**
+ * Responsive
+ **/
+@media all and (max-width: 1600px) {
+	
+}
+
+@media all and (max-width: 1200px) {
+	
+}
+
+@media all and (max-width: 800px) {
+	
+	/* navigation */
+	.hamburglar {
+		display: block;
+	}
+
+	nav {
+		&.mainnav {
+			display: none;
+
+			li {
+				display: block;
+				margin: 0;
+				a {
+					background: colour(light_grey);
+					color: colour(black);
+					border-bottom: 1px solid colour(grey);
+
+					&:hover,
+					&.current,
+					&.section {
+						background: colour(grey);
+					}
+				}
+
+				.menu.level-2 {
+					position: relative;
+				}
+			}
+		}
+
+	}
+
+	section {
+		.row {
+			.col {
+				@include col(1,3)
+			}
+		}
+	}
+
+	section {
+		&.grid {
+			.item {
+				@include grid( $cols: 2, $col_gap: 2%)
+			}
+		}
+	}
+}
+
+@media all and (max-width: 600px) {
+
+	section {
+		.row {
+			.col {
+				@include col(1,1)
+			}
+		}
+	}
+
+	section {
+		&.grid {
+			.item {
+				@include grid( $cols: 1, $col_gap: 2%)
+			}
+		}
+	}
+	
+}
+
+@media all and (max-width: 400px) {
+	
 }

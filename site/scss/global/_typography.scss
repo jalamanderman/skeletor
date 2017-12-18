@@ -59,7 +59,7 @@ h4 {
 .typography a:not(.button) {
 	text-decoration: none;
 	border-bottom: 1px dotted #CCCCCC;
-	color: $blue;
+	color: colour(blue);
 }
 
 .typography a:not(.button):hover {

@@ -9,5 +9,3 @@ After:
 # Caution: Indentation through two spaces, not tabs
 SSViewer:
   theme: 'default'
-UserDefinedForm:
-  email_template_directory: site/templates/email/

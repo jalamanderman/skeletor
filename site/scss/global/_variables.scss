@@ -1,28 +1,58 @@
+
 /**
  * Colours
  **/
 
-$black: #000000;
-$white: #FFFFFF;
-$grey: #BBBBBB;
-$light_grey: #EEEEEE;
-$blue: #06b8e4;
-$orange: #ffa619;
-$green: #69bd45;
-$yellow: #ffd02c;
-$red: #fb4540;
+/**
+ * Map names to colours
+ * @type {[type]}
+ */
+$colours: (
+	black: #000000,
+	white: #FFFFFF,
+	grey: #BBBBBB,
+	light_grey: #EEEEEE,
+	blue: #06b8e4,
+	orange: #ffa619,
+	green: #69bd45,
+	yellow: #ffd02c,
+	red: #fb4540
+);
 
-.black-text { 				color: $black !important; }
-.blue-text { 				color: $blue !important; }
-.grey-text {				color: $grey !important; }
-.green-text {				color: $green !important; }
-.yellow-text {				color: $yellow !important; }
-.red-text {					color: $red !important; }
+// Loop each member of $map as key ($class) and val ($colour)
+@each $class, $colour in $colours {
+	
+	// appy color attr to -text classes
+	&.#{$class}-text {
+		color: $colour !important;
+	}
 
-.black-background { 		background-color: $black !important; }
-.blue-background { 			background-color: $blue !important; }
-.grey-background {			background-color: $grey !important; }
-.green-background {			background-color: $green !important; }
-.yellow-background {		background-color: $yellow !important; }
-.red-background {			background-color: $red !important; }
+	// appy background-color attr to -bg classes
+	&.#{$class}-bg {
+		background-color: $colour !important;
 
+		&.semi-trans {
+			background-color: rgba($colour, 0.95) !important;
+		}
+
+	    .darken {
+			background-color: darken($colour, 5%) !important;
+	    }
+		
+	}
+
+}
+
+/**
+ * Retrieve colour from $colours map
+ * @param  {string} $key [name of colour, as defined in $colours map]
+ * @return hex colour
+ */
+@function colour($key) {
+	@if map-has-key($colours, $key) {
+		@return map-get($colours, $key);
+	}
+
+	@warn "Unknown `#{$key}` in $colours.";
+	@return null;
+}

@@ -23,7 +23,7 @@ button {
 			border: 1px solid transparent;
 			&:focus,
 			&:active {
-				border-color: $blue;
+				border-color: colour(blue);
 			}
 		}
 	}
@@ -33,7 +33,7 @@ button,
 .button,
 input[type="submit"] {
 	@include animate();
-	background: $blue;
+	background: colour(blue);
 	color: #FFFFFF;
 	cursor: hand;
 	cursor: pointer;
@@ -47,7 +47,7 @@ input[type="submit"] {
 button:hover,
 .button:hover,
 input[type="submit"]:hover {
-	background: darken($blue, 10%);
+	background: darken(colour(blue), 10%);
 }
 
 ::-webkit-input-placeholder {	color: rgba(0,0,0,0.25); }
@@ -61,7 +61,7 @@ input[type="submit"]:hover {
 form.contact-form {
 	border: 0;
 	padding: 30px;
-	background: $light_grey;
+	background: colour(light_grey);
 
 	.field {
 		&.text,
@@ -86,7 +86,7 @@ form.contact-form {
 		display: inline-block;
 		a {
 			display: inline-block;
-			background: $grey;
+			background: colour(grey);
 			color: #FFFFFF;
 			cursor: hand;
 			cursor: pointer;
@@ -99,7 +99,7 @@ form.contact-form {
 			border: 0;
 
 			&:hover {
-				background: darken($grey, 10%);
+				background: darken(colour(grey), 10%);
 			}
 		}
 	}
