@@ -7,7 +7,7 @@ This is the base platform for new installs on the SilverStripe framework. It ind
 
 - Node Package Manager (npm) (https://www.npmjs.com/)
 - Webpack (https://webpack.github.io/)
-- SilverStripe 3.4
+- SilverStripe 3.6.2
 
 
 ## Install requirements
