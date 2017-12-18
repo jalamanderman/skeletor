@@ -1,3 +1,4 @@
+
 /**
  * [Subtracts the border and padding from the width of the element.]
  */
@@ -40,14 +41,14 @@
  * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
  * @param  {[int with 'deg' appended]} $deg [The angle of the rotation]
  */
-@mixin rotateVerticallyHorizontallyAlign($leftPos, $topPos, $deg){
-	left: $leftPos;
-	top: $topPos;
-	-webkit-transform: translate(-$leftPos, -$topPos) rotate($deg);
-	-moz-transform: translate(-$leftPos, -$topPos) rotate($deg);
-	-ms-transform: translate(-$leftPos, -$topPos) rotate($deg);
-	-o-transform: translate(-$leftPos, -$topPos) rotate($deg);
-	transform: translate(-$leftPos, -$topPos) rotate($deg);
+@mixin rotateVerticalHorizontalAlign($posPercentageX, $posPercentageY, $deg, $positionX: left, $positionY: top){
+	#{$positionX}: $posPercentageX;
+	#{$positionY}: $posPercentageY;
+	-webkit-transform: translate(-$posPercentageX, -$posPercentageY) rotate($deg);
+	-moz-transform: translate(-$posPercentageX, -$posPercentageY) rotate($deg);
+	-ms-transform: translate(-$posPercentageX, -$posPercentageY) rotate($deg);
+	-o-transform: translate(-$posPercentageX, -$posPercentageY) rotate($deg);
+	transform: translate(-$posPercentageX, -$posPercentageY) rotate($deg);
 }
 
 
@@ -56,13 +57,13 @@
  * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
  * @param  {[int with 'deg' appended]} $deg [The angle of the rotation]
  */
-@mixin rotateVerticallyAlign($topPos, $deg){
-	top: $topPos;
-	-webkit-transform: translateY(-$topPos) rotate($deg);
-	-moz-transform: translateY(-$topPos) rotate($deg);
-	-ms-transform: translateY(-$topPos) rotate($deg);
-	-o-transform: translateY(-$topPos) rotate($deg);
-	transform: translateY(-$topPos) rotate($deg);
+@mixin rotateVerticalAlign($posPercentageY, $deg, $positionY: top){
+	#{$positionY}: $posPercentageY;
+	-webkit-transform: translateY(-$posPercentageY) rotate($deg);
+	-moz-transform: translateY(-$posPercentageY) rotate($deg);
+	-ms-transform: translateY(-$posPercentageY) rotate($deg);
+	-o-transform: translateY(-$posPercentageY) rotate($deg);
+	transform: translateY(-$posPercentageY) rotate($deg);
 }
 
 
@@ -71,13 +72,13 @@
  * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
  * @param  {[int with 'deg' appended]} $deg [The angle of the rotation]
  */
-@mixin rotateHorizontallyAlign($leftPos, $deg){
-	left: $leftPos;
-	-webkit-transform: translateY(-$leftPos) rotate($deg);
-	-moz-transform: translateY(-$leftPos) rotate($deg);
-	-ms-transform: translateY(-$leftPos) rotate($deg);
-	-o-transform: translateY(-$leftPos) rotate($deg);
-	transform: translateY(-$leftPos) rotate($deg);
+@mixin rotateHorizontalAlign($posPercentageX, $deg, $positionX: left){
+	#{$positionX}: $posPercentageX;
+	-webkit-transform: translateX(-$posPercentageX) rotate($deg);
+	-moz-transform: translateX(-$posPercentageX) rotate($deg);
+	-ms-transform: translateX(-$posPercentageX) rotate($deg);
+	-o-transform: translateX(-$posPercentageX) rotate($deg);
+	transform: translateX(-$posPercentageX) rotate($deg);
 }
 
 
@@ -85,7 +86,7 @@
  * [Vertically align element within a relatively positioned element.]
  * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will vertically center align the element.]
  */
-@mixin verticallyAlign($topPos){
+@mixin verticalAlign($topPos){
 	top: $topPos;
 	-webkit-transform: translateY(-$topPos);
 	-moz-transform: translateY(-$topPos);
@@ -98,7 +99,7 @@
  * [Horizontally align element within a relatively positioned element.]
  * @param  {[percentage]} $leftPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
  */
-@mixin horizontallyAlign($leftPos){
+@mixin horizontalAlign($leftPos){
 	left: $leftPos;
 	-webkit-transform: translateX(-$leftPos);
 	-moz-transform: translateX(-$leftPos);
@@ -112,14 +113,36 @@
  * @param  {[percentage]} $leftPos [Pass the horizontally position as a percetage. eg 50% will horizontally center align the element.]
  * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
  */
-@mixin verticallyHorizontallyAlign($leftPos, $topPos){
-	left: $leftPos;
-	top: $topPos;
-	-webkit-transform: translate(-$leftPos, -$topPos);
-	-moz-transform: translate(-$leftPos, -$topPos);
-	-ms-transform: translate(-$leftPos, -$topPos);
-	-o-transform: translate(-$leftPos, -$topPos);
-	transform: translate(-$leftPos, -$topPos);
+
+@mixin verticalHorizontalAlign($posPercentageX, $posPercentageY, $positionX: left, $positionY: top){
+	#{$positionX}: $posPercentageX;
+	#{$positionY}: $posPercentageY;
+	-webkit-transform: translate(-$posPercentageX, -$posPercentageY);
+	-moz-transform: translate(-$posPercentageX, -$posPercentageY);
+	-ms-transform: translate(-$posPercentageX, -$posPercentageY);
+	-o-transform: translate(-$posPercentageX, -$posPercentageY);
+	transform: translate(-$posPercentageX, -$posPercentageY);
+}
+
+
+// @mixin verticalHorizontalAlign($leftPos, $topPos){
+// 	left: $leftPos;
+// 	top: $topPos;
+// 	-webkit-transform: translate(-$leftPos, -$topPos);
+// 	-moz-transform: translate(-$leftPos, -$topPos);
+// 	-ms-transform: translate(-$leftPos, -$topPos);
+// 	-o-transform: translate(-$leftPos, -$topPos);
+// 	transform: translate(-$leftPos, -$topPos);
+// }
+
+
+@mixin no_transform(){	
+	-moz-transform: none;
+	-o-transform: none;
+	-webkit-transform: none;
+	transform: none;
+	filter: none;
+	-ms-filter: none;
 }
 
 /**
@@ -136,13 +159,13 @@
 }
 
 //	Background image - no repeat, centered, cover
-@mixin OptimiseBgImg() {
+@mixin OptimiseBgImg($size: cover, $position: center center) {
 	background-repeat: no-repeat;
-	background-position: center top;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background-position: $position;
+	-webkit-background-size: $size;
+	-moz-background-size: $size;
+	-o-background-size: $size;
+	background-size: $size;
 }
 
 //	Center item horizontally and vertically
@@ -177,19 +200,28 @@
 	// reset previously defined margins (at higher breakpoints)
 	&:nth-of-type(n),
 	&:nth-of-type(1n+1) {
-		margin: 0 $col_gap;
+		margin: $row_gap $col_gap 0;
 		clear: none;
-		// &:after{clear: none;}
+	}
+
+	@for $i from 1 through $cols {
+
+		&:nth-of-type(#{$i}){
+			margin-top: 0;
+		}
+
 	}
 
 	// first of row
 	&:nth-of-type(#{$cols}n+1) {
+		//margin-top: $row_gap;
 		margin-left: 0;
 		clear: both;
 	}
 
 	// handle first of row if there are less than $col
 	&:first-of-type {
+		//margin-top: 0;
 		margin-left: 0;
 	}
 
@@ -210,51 +242,17 @@
 	}
 }
 
-
-
-
-/**
- * Ease between states
- * Use this to smooth hover/active/focus events
- **/ 
-@mixin animate( $duration: 0.2s, $easing: ease-in-out ){
-	-webkit-transition: all $duration $easing;
-	   -moz-transition: all $duration $easing;
-		 -o-transition: all $duration $easing;
-		    transition: all $duration $easing; 
-}
-
-
 /**
  * Clearfix
  **/
 @mixin clearfix(){
-	&::after {
-		content: '';
-		clear: both;
-		display: block;
-	}
-}
-
-
-/**
- * Multi-column
- * @param $cols int = number of columns to span
- * @param $sum int = total number of columns
- * @param $gap mixed = gap between items (optional, defaults to 1rem)
- **/
-@mixin col($cols, $sum, $gap: 1rem){
-	width: percentage($cols/$sum);
-	display: block;
-	float: left;
-	box-sizing: border-box;
-	padding: 0 $gap;
-
-	&:first-of-type {
-		padding-left: 0;
+	&:before,
+	&:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
 	}
 
-	&:last-of-type {
-		padding-right: 0;
+	&:after {
+	    clear: both;
 	}
 }
