@@ -2215,27 +2215,28 @@ form.contact-form {
 nav.mainnav li {
   display: inline-block;
   margin-right: 10px;
-  position: relative; }
+  position: relative;
+  background: #06b8e4; }
+  nav.mainnav li:hover, nav.mainnav li.current, nav.mainnav li.section {
+    background: #ffa619; }
   nav.mainnav li.last {
     margin-right: 0; }
   nav.mainnav li a {
     padding: 10px;
-    display: block;
+    display: inline-block;
     text-decoration: none;
     color: #FFFFFF;
-    background: #06b8e4;
     position: relative; }
-    nav.mainnav li a:hover, nav.mainnav li a.current, nav.mainnav li a.section {
-      background: #ffa619; }
-    nav.mainnav li a.toggle-button {
-      padding-right: 2em; }
-      nav.mainnav li a.toggle-button .fa {
-        position: absolute;
-        right: 0.5em;
-        height: 1em;
-        width: 1em;
-        line-height: 1.5em;
-        font-size: 1em; }
+  nav.mainnav li .toggle-button {
+    padding: 0 1rem;
+    cursor: pointer;
+    color: #FFFFFF; }
+    nav.mainnav li .toggle-button.open {
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg); }
   nav.mainnav li .menu.level-2 {
     position: absolute;
     display: none;

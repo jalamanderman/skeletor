@@ -145,8 +145,8 @@ function PageSetup(){
 
 function ToggleContent(){
     $('.toggle-button').click(function(e){
-    	e.preventDefault();
-        $(this).parent('.togglable').children('.togglable-content').slideToggle(200);
+    	//e.preventDefault();
+        $(this).parent('.togglable').children('.togglable-content').slideToggle(100);
         $(this).toggleClass('open');
         if( $(this).children('.fa').length ){
         	$(this).children('.fa').toggleClass('fa-plus');

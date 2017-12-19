@@ -10,33 +10,39 @@
 			display: inline-block;
 			margin-right: 10px;
 			position: relative;
+			background: colour(blue);
+			&:hover, &.current, &.section {
+				background: colour(orange);
+			}
 			&.last {
 				margin-right: 0;
 			}
 
 			a {
 				padding: 10px;
-				display: block;
+				display: inline-block;
 				text-decoration: none;
 				color: colour(white);
-				background: colour(blue);
 				position: relative;
-				&:hover, &.current, &.section {
-					background: colour(orange);
-				}
-
-				&.toggle-button {
-					padding-right: 2em;
-					.fa {
-						position: absolute;
-						right: 0.5em;
-						height: 1em;
-						width: 1em;
-						line-height: 1.5em;
-						font-size: 1em;
-					}
-				}
 			}
+			.toggle-button {
+					padding: 0 1rem;
+					cursor: pointer;
+					color: colour(white);
+
+					&.open {
+						@include rotate(180deg);
+					}
+
+					// .fa {
+					// 	position: absolute;
+					// 	right: 0.5em;
+					// 	height: 1em;
+					// 	width: 1em;
+					// 	line-height: 1.5em;
+					// 	font-size: 1em;
+					// }
+				}
 
 			.menu.level-2 {
 				position: absolute;
