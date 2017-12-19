@@ -19,6 +19,7 @@ class Page extends SiteTree {
 		$controller = new $class($this);
 		return $controller;
 	}
+	
 }
 
 class Page_Controller extends ContentController {
@@ -46,4 +47,31 @@ class Page_Controller extends ContentController {
 			Requirements::css('site/production/index.css');
 		}
 	}
+
+	/**
+	 * Get logo set in site config if it exists
+	 **/
+	function Logo(){
+		if ($Logo = SiteConfig::current_site_config()->Logo()){
+			return $Logo;
+		}
+		return false;
+	}
+
+	/**
+	 * Return image to use in og:image meta tag
+	 * Default to site logo if it exists, otherwise return false.
+	 *
+	 * Override this as needed in page classes to dish up a relevant image.
+	 * For instance, a news item may have a featured image, so on
+	 * that page class this function could return the featured image.
+	 **/
+	function OgImage(){
+		if ($Image = $this->Logo()){
+			return $Image;
+		}
+		return false;
+	}
+
+
 }

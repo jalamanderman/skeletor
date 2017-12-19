@@ -4,5 +4,5 @@
 // compiles into the necessary css files
 require('../scss/index.scss');
 
-// Start your website!
-console.log('Loaded!');
+require('./components/navigation.js');
+require('./global/effects.js');

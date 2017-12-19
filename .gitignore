@@ -4,7 +4,6 @@
 /node_modules/
 /silverstripe-cache/
 /.sass-cache/
-/site/production/*
 .DS_Store
 *.orig
 Thumbs.db
@@ -16,8 +15,6 @@ Thumbs.db
 /framework/
 /gridfieldextensions/
 /reports/
-/segment-field/
 /siteconfig/
 /sortablegridfield/
-/userforms/
 # END of GitIgnoreEditor

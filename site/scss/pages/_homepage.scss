@@ -10,3 +10,11 @@ section {
 		}
 	}
 }
+
+section {
+	&.grid {
+		.item {
+			@include grid( $cols: 3, $col_gap: 2% )
+		}
+	}
+}

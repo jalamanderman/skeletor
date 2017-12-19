@@ -2,3 +2,120 @@
 /**
  * NAV PRIMARY
  **/
+
+ nav {
+
+	&.mainnav {
+		li {
+			display: inline-block;
+			margin-right: 10px;
+			position: relative;
+			background: colour(blue);
+			&:hover, &.current, &.section {
+				background: colour(orange);
+			}
+			&.last {
+				margin-right: 0;
+			}
+
+			a {
+				padding: 10px;
+				display: inline-block;
+				text-decoration: none;
+				color: colour(white);
+				position: relative;
+			}
+			.toggle-button {
+					padding: 0 1rem;
+					cursor: pointer;
+					color: colour(white);
+
+					&.open {
+						@include rotate(180deg);
+					}
+
+					// .fa {
+					// 	position: absolute;
+					// 	right: 0.5em;
+					// 	height: 1em;
+					// 	width: 1em;
+					// 	line-height: 1.5em;
+					// 	font-size: 1em;
+					// }
+				}
+
+			.menu.level-2 {
+				position: absolute;
+				display: none;
+				background: colour(light_grey);
+				min-width: 100%;
+				li {
+					display: block;
+					margin: 0;
+					a {
+						display: block;
+						white-space: nowrap;
+						background: colour(light_grey);
+						color: colour(black);
+						border-bottom: 1px solid colour(white);
+						&:hover {
+							border-bottom: 1px solid colour(grey);
+						}
+					}
+				}
+			}
+
+			&:hover {
+				.menu.level-2 {
+					/*display: block;*/
+				}
+			}
+		}
+	}
+
+}
+
+.hamburglar {
+    display: none;
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	z-index: 13;
+	cursor: pointer;
+	
+	span {
+		display: block;
+		position: absolute;
+		height: 20%;
+		width: 100%;
+		background: colour(black);
+		opacity: 1;
+		@include rotate(0deg);
+		@include transition($property: all, $time: 0.25s, $mode: ease-in-out);
+		
+		&:nth-child(1) { top: 0; }
+		&:nth-child(2) { top: 40%; }
+		&:nth-child(3) { bottom: 0; }
+	}
+	
+	&.open {
+		span { background: colour(blue); }
+		span:nth-child(2) {
+			opacity: 0;
+			width: 0;
+
+		}
+		span:nth-child(1) {
+			@include rotate(45deg);
+			width: 120%;
+			top: 40%;
+		}
+		span:nth-child(3) {
+			@include rotate(-45deg);
+			width: 120%;
+			bottom: 40%;
+		}
+	}
+}

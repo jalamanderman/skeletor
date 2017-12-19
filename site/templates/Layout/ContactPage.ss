@@ -6,7 +6,7 @@
 
 			<h1>$Title</h1>
 			$Content
-			$Form
+			$ContactForm
 
 		</main>
 
@@ -19,6 +19,8 @@
 					<a href="{$Link}">{$MenuTitle.XML}</a>
 				<% end_loop %>
 			</nav>
+
+			$ContactDetails
 
 		</aside>
 

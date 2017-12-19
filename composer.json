@@ -2,14 +2,14 @@
 	"name": "plasticstudio/skeletor",
 	"description": "The PlasticStudio base SilverStripe project / installer.",
 	"require": {
-		"silverstripe/cms": "3.*",
-		"silverstripe/framework": "3.*",
+		"silverstripe/cms": "3.6.2",
+		"silverstripe/framework": "3.6.2",
 		"symbiote/silverstripe-gridfieldextensions": "2.*",
-		"silverstripe/userforms": "4.*",
-		"undefinedoffset/sortablegridfield": "1.*",
+		"undefinedoffset/sortablegridfield": "1.0.0",
 		"unclecheese/betterbuttons": "1.*",
-		"plasticstudio/dev-tools": "1.*",
-		"gdmedia/ss-auto-git-ignore": "1.*"
+		"plasticstudio/dev-tools": "1.3.0",
+		"plasticstudio/sitemap": "1.0",
+		"gdmedia/ss-auto-git-ignore": "0.0.3"
 	},
 	"minimum-stability": "dev",
 	"scripts": {
