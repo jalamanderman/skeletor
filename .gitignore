@@ -4,6 +4,7 @@
 /node_modules/
 /silverstripe-cache/
 /.sass-cache/
+/resources/
 .DS_Store
 *.orig
 Thumbs.db
