@@ -1,54 +1,52 @@
 <?php
 
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\EmailField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\SiteConfig\SiteConfig;
+
 class ContactPage extends Page {
+	
+	private static $description = 'Standard page with a contact form';
+	private static $icon = 'site/cms/icons/email.png';
 
     private static $db = array(
-        'ToEmail'=> 'Varchar(255)',
+        'Recipients'=> 'Varchar(1024)',
 		'FromEmail'=> 'Varchar(255)',
 		'FromName'=> 'Varchar(255)',
-		'ContactDetails'=> 'HTMLText',
-		'OnCompletionMessage'=> 'HTMLText',
-		'SendCustomerEmail'=> 'Boolean'
+		'SendCustomerEmail'=> 'Boolean(false)',
+		'SuccessMessage'=> 'HTMLText'
     );
 
     private static $has_many = array(
         'Submissions' => 'FormSubmission'
     );
-	
-	static $description = 'Basic contact page';
-	static $icon = 'site/cms/icons/email.png';
 
-    function getCMSFields(){
+    public function getCMSFields(){
 	
         $fields = parent::getCMSFields();
 		
-		// ContactDetails tab
-		//$fields->addFieldToTab('Root.ContactDetails', new TextField('LatLong', 'Lat/Long coordinates<br/><em>For Google map</em>'));
-		$fields->addFieldToTab('Root.ContactDetails', HTMLEditorField::create('ContactDetails', 'Contact details'));
-		
-		// Emails tab
 		$fields->addFieldToTab(
-			'Root.Emails', 
-			TextareaField::create(
-				'ToEmail', 
-				'"To" email'
-			)->setDescription('Email addresses to deliver form submissions to. Can be comma-separated list.')
-		);
-		$fields->addFieldToTab(
-			'Root.Emails', 
+			'Root.Delivery', 
 			TextField::create(
-				'FromEmail', 
-				'"From" & "Reply-to" email'
-			)->setDescription('Displayed in form submission email.')
+				'Recipients', 
+				'Recipients'
+			)->setDescription('Comma-separated list of email addresses to send this form to')
+		);
+		$fields->addFieldToTab('Root.Delivery', TextField::create('FromEmail', '"From" & "Reply-to" email')->setDescription('Displayed in form submission email.')
 		);
 		$fields->addFieldToTab(
-			'Root.Emails', 
+			'Root.Delivery', 
 			TextField::create(
 				'FromName', 
 				'From name'
 			)->setDescription('Displayed in form submission email. Defaults to "'.SiteConfig::current_site_config()->Title.' contact form."')
 		);
-		$fields->addFieldToTab('Root.Emails', CheckboxField::create('SendCustomerEmail', 'Send confirmation email to customer?'));
+		$fields->addFieldToTab('Root.Delivery', CheckboxField::create('SendCustomerEmail', 'Send confirmation email to customer?'));
 		
 		// Submissions tab
         $GridFieldConfig = GridFieldConfig_RecordEditor::create();
@@ -61,104 +59,8 @@ class ContactPage extends Page {
         $fields->addFieldToTab('Root.Submissions', $SubmissionsField);
 		
 		// OnCompletion tab
-		$fields->addFieldToTab('Root.OnCompletion', HTMLEditorField::create('OnCompletionMessage', 'Message to show after form submission'));
+		$fields->addFieldToTab('Root.Delivery', HTMLEditorField::create('SuccessMessage', 'Message to show after form submission'));
 		
-        return $fields;
-		
+        return $fields;		
     }
-
-
-
-}
-
-
-class ContactPage_Controller extends Page_Controller { 
-
-    private static $allowed_actions = array(
-		'ContactForm',
-		'submitted'
-	);
-
-    public function init(){
-        parent::init();
-    }
-	
-	function ContactForm(){
-
-		$params = $this->request->params();
-		
-		if($params['Action'] == 'submitted'){
-		
-			return $this->OnCompletionMessage;
-			
-		}else{
-	
-			$fields = FieldList::create(
-				TextField::create('Name', 'Name'),
-				EmailField::create('Email', 'Email'),
-				TextField::create('Phone', 'Phone'),
-				TextareaField::create('Message', 'Message'),
-				HiddenField::create('ContactPageID', null, $this->ID)
-			);
-			
-			$actions = FieldList::create(
-				FormAction::create('doContactForm', 'Submit')
-			);
-			
-			// Validate required fields
-			$validator = RequiredFields::create('Name', 'Email','Phone', 'Message');
-			
-			$form = Form::create($this, 'ContactForm', $fields, $actions, $validator)->addExtraClass('contact-form');
-			
-			return $form;
-
-		}
-	
-	}
-	
-    function doContactForm($data, $form) {
-
-    	// create form submission record
-		$Submission = FormSubmission::create();
-		$Submission->URL = $this->Link();
-		$Submission->Payload = json_encode($data);
-		$Submission->OriginID = $this->ID;
-		$Submission->OriginClass = $this->ClassName;
-		$Submission->write();
-		$Submission->SendEmails();
-		
-        $this->redirect($this->Link().'submitted');
-    }
-	
-	/***
-	* Send email
-	***/
-	function EmailAdmin($submission){
-	
-		if( !empty($this->FromName) ){
-			$FromName = $this->FromName;
-		}
-		else{
-			$FromName = $this->SiteConfig()->Title.' contact form';
-		}
-
-		$from = $FromName . ' <' . $this->FromEmail . '>';
-		$to = $this->ToEmail;
-		//$to = Email::setAdminEmail();
-		$subject = 'A new submission has been received from '.$FromName;
-		$body = '';
-		
-		$email = new Email($from, $to, $subject, $body);
-		
-		//set template
-    	$email->setTemplate('AdminEmail');
-		
-    	//populate template
-    	$email->populateTemplate($submission);
-		
-    	//send mail
-    	$email->send();
-		
-	}
-	
 }

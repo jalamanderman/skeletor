@@ -130,6 +130,7 @@ function MobileNav(){
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */(function($) {/**
  * On page load
  **/
@@ -154,6 +155,32 @@ function ToggleContent(){
         }
     });
 }
+=======
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * On page load
+ **/
+$(document).ready( function(){
+	// Start your website!
+	console.log('Loaded!');
+	PageSetup();
+});
+
+function PageSetup(){
+    ToggleContent();
+}
+
+function ToggleContent(){
+    $('.toggle-button').click(function(e){
+    	e.preventDefault();
+        $(this).parent('.togglable').children('.togglable-content').slideToggle(200);
+        $(this).toggleClass('open');
+        if( $(this).children('.fa').length ){
+        	$(this).children('.fa').toggleClass('fa-plus');
+        	$(this).children('.fa').toggleClass('fa-minus');
+        }
+    });
+}
+>>>>>>> 4
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

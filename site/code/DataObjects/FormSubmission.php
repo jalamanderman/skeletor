@@ -1,4 +1,23 @@
 <?php
+
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\EmailField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\ReadonlyField;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\TreeDropdownField_Readonly;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Control\Email\Email;
+use SilverStripe\Control\Director;
+use SilverStripe\SiteConfig\SiteConfig;
+
 class FormSubmission extends DataObject {
 	
 	private static $singular_name = 'Form submission';
@@ -9,56 +28,53 @@ class FormSubmission extends DataObject {
 	private static $db = array(
 		'URL' => 'Varchar',
 		'Payload' => 'Text',
-		'IPAddress' => 'Varchar(18)',
-		'UniqueID' => 'Text'
+		'IPAddress' => 'Varchar(18)'
 	);
 	
 	private static $has_one = array(
-		'Origin' => 'DataObject'
+		'Origin' => DataObject::class
 	);
 	
 	private static $summary_fields = array(
 		'Created' => 'Created',
-		'SubmitterName' => 'Name',
-		'SubmitterEmail' => 'Email',
 		'URL' => 'URL',
-		'OriginType' => 'Origin',
-		//'IPAddress' => 'IP Address',
-		'UniqueID' => 'UniqueID'
+		'Origin.ClassName' => 'Origin',
+		'IPAddress' => 'IP Address'
 	);
 
 	/**
 	 * CMS Fields
 	 **/
 	public function getCMSFields(){
-		$fields = FieldList::create();
 
-		$fields->push(TextField::create('URL','URL'));
-		$fields->push(TextField::create('IPAddress','IPAddress'));
-		$fields->push(TextField::create('UniqueID','UniqueID'));
+		$fields = parent::getCMSFields();
 
-		$fields->push(LiteralField::create('html','<br /><h3>Submission data</h3>'));
+		if ($this->Origin()){
+			$fields->addFieldToTab('Root.Main', ReadonlyField::create('Origin','Origin',($this->Origin()->ClassName.': '.$this->Origin()->ID)));
+		} else {
+			$fields->addFieldToTab('Root.Main', ReadonlyField::create('Origin','Origin',"No origin record"));
+		}
+		$fields->addFieldToTab('Root.Main', ReadonlyField::create('URL','URL'));
+		$fields->addFieldToTab('Root.Main', ReadonlyField::create('IPAddress','IPAddress'));
+
+		$fields->addFieldToTab('Root.Main', HeaderField::create('Payload', 'Payload', 3));
 		$data = json_decode($this->Payload, true);
-		foreach ($data as $key => $value){
-			if ($key == 'AttendeesData'){
-				$fields->push(ReadonlyField::create('Playload_'.$key,$key,json_encode($value)));
-			} else {
-				$fields->push(ReadonlyField::create('Playload_'.$key,$key,(string)$value));
+		if ($data){
+			foreach ($data as $key => $value){
+				$fields->addFieldToTab('Root.Main', ReadonlyField::create('Playload_'.$key, $key, (string)$value));
 			}
+		} else {
+			$fields->addFieldToTab('Root.Main', LiteralField::create('html', '<p class="message notice">No submission data</p>'));
 		}
 
 		return $fields;
 	}
 
-	function onBeforeWrite(){
-		$this->UniqueID = $this->CreateUniqueID($this->Created);
-		parent::onBeforeWrite();
-	}
-
 	public function OriginType(){
-		if( $this->OriginClass ) return $this->OriginClass;
-		if( $this->OriginID <= 0 ) return '-';
-		return $this->Origin()->ClassName;
+		if ($this->Origin()){
+			return $this->Origin()->ClassName;
+		}
+		return 'Unknown';
 	}
 
 
@@ -72,28 +88,29 @@ class FormSubmission extends DataObject {
 
 		// set up email "from" vars
 		$config = SiteConfig::current_site_config(); 
-		if( $config->SendEmailsFrom_Name && $config->SendEmailsFrom_Email ){
-			$from = '"'.$config->SendEmailsFrom_Name.'" <'.$config->SendEmailsFrom_Email.'>';
-		}else{
-			$from = 'DEFAULT <noreply@default.co.nz>';
+		if ($config->EmailSender && $config->EmailSender_Name){
+			$from = $config->EmailSender;
+		} else {
+			$from = 'noreply@plasticstudio.co.nz';
 		}
 
 		// define time var to use in template
 		$body = '';
 		$data->TimeSent = date('Y-m-d H:i:s');
-		$data->UniqueID = $this->UniqueID;
+		$data->ID = $this->ID;
+		$data->Logo = $config->Logo();
+		$data->Logo = $config->Logo();
 
 		// different sources require different handling
 		switch ($this->OriginType()){
 
 			case 'ContactPage':
-				// --- ADMIN EMAIL ---
-				if( isset($this->Origin()->ToEmail) ){
-					$to = $this->Origin()->ToEmail;
+				if (isset($this->Origin()->Recipients)){
+					$to = $this->Origin()->Recipients;
 				}else{
-					$to = $config->SendEmailsTo_Email;
+					$to = $config->EmailRecipients;
 				}
-				$subject = $config->Title . ' Website contact form submission';
+				$subject = $config->Title . ' contact form';
 				$data->Title = $data->Name . ' has made an enquiry.';
 				$data->URL = Director::absoluteBaseURL();
 				$data->Data = ArrayList::create(array(
@@ -119,18 +136,18 @@ class FormSubmission extends DataObject {
 					))
 				));
 				$email = Email::create($from, $to, $subject, $body);
-				$email->replyTo($data->Email);
-				$email->setTemplate('Emails/FormSubmission');
-				$email->populateTemplate( ArrayData::create($data) );
+				$email->setReplyTo($data->Email);
+				$email->setHTMLTemplate('Email/FormSubmission');
+				$email->customise(ArrayData::create($data));
 				$email->send();
 
 				if($this->Origin()->SendCustomerEmail){
 					// --- CUSTOMER EMAIL ---
-					$to = '"'.$data->Name.'" <'.$data->Email.'>';
+					$to = $data->Email;
 					$data->Title = 'Thanks for your message, we\'ll be in touch soon. The details you submitted are included below for your own records.';
 					$email = Email::create($from, $to, $subject, $body);
-					$email->setTemplate('Emails/FormSubmission');
-					$email->populateTemplate( ArrayData::create($data) );
+					$email->setHTMLTemplate('Email/FormSubmission');
+					$email->customise(ArrayData::create($data));
 					$email->send();
 				}
 
@@ -138,39 +155,26 @@ class FormSubmission extends DataObject {
 
 			default:
 				
-				// --- ADMIN EMAIL ---
-				$to = $config->SendEmailsTo_Email;
-				$subject = $config->Title . ' Website form submission';
+				$to = $config->EmailRecipients;
+				$subject = $config->Title . ' contact submission';
 				$data->Title = $data->Name . ' sent you a message through the website.';
 				$email = Email::create($from, $to, $subject, $body);
 				$email->replyTo($data->Email);
-				$email->setTemplate('Emails/FormSubmission');
+				$email->setTemplate('Email/FormSubmission');
 				$email->populateTemplate( ArrayData::create($data) );
 				$email->send();
 
-				if($this->Origin()->SendCustomerEmail){
-					// --- CUSTOMER EMAIL ---
+				if ($this->Origin()->SendCustomerEmail){
 					$to = '"'.$data->Name.'" <'.$data->Email.'>';
 					$data->Title = 'Thanks for your message, we\'ll be in touch soon. The details you submitted are included below for your own records.';
 					$email = Email::create($from, $to, $subject, $body);
-					$email->setTemplate('Emails/FormSubmission');
-					$email->populateTemplate( ArrayData::create($data) );
+					$email->setHTMLTemplate('Emails/FormSubmission');
+					$email->customise( ArrayData::create($data) );
 					$email->send();
 				}
 		}
 
 		return;
-	}
-
-	/**
-	 * Create unique ID for submission
-	 * 
-	 * @param $str string | string to hash
-	 * 
-	 * @return string | hashed string
-	 **/
-	function CreateUniqueID($str){
-		return md5($str . microtime());
 	}
 
 	function EditLink(){
@@ -201,21 +205,5 @@ class FormSubmission extends DataObject {
 		if( $attr && isset($data->$attr) ){
 			return $data->$attr;
 		}
-
 	}
-
-	function SubmitterName(){
-		if( $Name = $this->PayloadAttr('Name') ){
-			return $Name;
-		}
-		return '(not set)';
-	}
-
-	function SubmitterEmail(){
-		if( $Email = $this->PayloadAttr('Email') ){
-			return $Email;
-		}
-		return '(not set)';
-	}
-
 }

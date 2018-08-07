@@ -21,9 +21,9 @@
 		<meta property="og:image" content="{$absoluteBaseHref}site/images/logo.png" />
 	<% end_if %>
 	
-	<link rel="shortcut icon" type="image/ico" href="/site/images/favicon.ico" />
-	<link rel="shortcut icon" type="image/x-icon" href="/site/images/favicon.ico" />
-	<link rel="shortcut-icon" href="/site/images/favicon.ico" />
+	<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	<link rel="shortcut-icon" href="/favicon.ico" />
 	
 	<% include GoogleAnalytics %>
 	

@@ -1,40 +1,31 @@
 <?php
+
+use SilverStripe\Assets\Image;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextAreaField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+
 class SiteConfigExtension extends DataExtension {
 
 	static $db = array(
-		'SendEmailsTo_Email' => 'Text',
-		'SendEmailsFrom_Name' => 'Text',
-		'SendEmailsFrom_Email' => 'Text'
+		'EmailRecipients' => 'Text',
+		'EmailSender' => 'Text',
+		'EmailSender_Name' => 'Text'
 	);
 
 	static $has_one = array(
-		'Logo' => 'Image'
+		'Logo' => Image::class
 	);
 	
 	public function updateCMSFields(FieldList $fields){
 
-		// Global assets
-		$fields->addFieldToTab('Root.GlobalAssets', HeaderField::create('Site assets', 4));
-		$fields->addFieldToTab('Root.GlobalAssets', UploadField::create('Logo', 'Logo image')->setFolderName('GlobalAssets'));
-		
-		// Email settings
-        $fields->addFieldToTab(
-        	'Root.Emails', 
-        	TextAreaField::create('SendEmailsTo_Email','Admin "To" email address(es)')
-				->setDescription('Email addresses for deliver of global admin emails eg, contact form submissions etc.<br/>Can be comma-separated list.')
-		);
-
-		$fields->addFieldToTab(
-        	'Root.Emails', 
-        	TextField::create('SendEmailsFrom_Email','Admin "From" email address')
-				->setDescription('Email addresses for global admin emails to come "From"')
-		);
-		$fields->addFieldToTab(
-        	'Root.Emails', 
-        	TextField::create('SendEmailsFrom_Name','Admin "From" email name')
-				->setDescription('Name for global admin emails to come "From"')
-		);
-
+		$fields->addFieldToTab('Root.Main', UploadField::create('Logo', 'Site logo')->setDescription('Default logo for email templates and shared links on social media'));		
+        $fields->addFieldToTab('Root.Main', HeaderField::create('Email','Email settings', 2));
+        $fields->addFieldToTab('Root.Main', TextField::create('EmailRecipients','Email recipients')->setDescription('Default addresses to send all website emails to (comma-separated list)'));
+		$fields->addFieldToTab('Root.Main', TextField::create('EmailSender','Email sender')->setDescription('Default <strong>address</strong> for website emails to come from (eg Joe Bloggs &lt;<em>joe.bloggs@website.com</em>&gt;)'));
+		$fields->addFieldToTab('Root.Main', TextField::create('EmailSender_Name','Email sender name')->setDescription('Default <strong>name</strong> for website emails to come from (eg <em>Joe Bloggs</em> &lt;joe.bloggs@website.com&gt;)'));
 	}
-
 }
