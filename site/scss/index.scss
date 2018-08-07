@@ -1,4 +1,4 @@
- 
+
 /**
  * 3rd party
  *
@@ -8,7 +8,7 @@
 
 
 /**
- * Global 
+ * Global
  *
  * Styles and mixins that are used throughout the website. Keep things logically
  * separated into concern-based filenames (ie typography, forms, etc).
@@ -20,6 +20,7 @@
 @import 'global/layout';
 @import 'global/typography';
 @import 'global/forms';
+@import 'global/tables';
 
 
 
@@ -27,9 +28,10 @@
  * Self-contained components
  *
  * Any significant component that is reused throughout the site. Typically these would have
- * a matching template (ie Includes/{COMPONENT_NAME}), and js (ie js/{COMPONENT_NAME}). 
+ * a matching template (ie Includes/{COMPONENT_NAME}), and js (ie js/{COMPONENT_NAME}).
  **/
 @import 'components/navigation';
+@import 'components/contact-form';
 
 
 

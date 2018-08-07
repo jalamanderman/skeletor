@@ -7,19 +7,23 @@ var node_dir = __dirname + '/node_modules';
 var output_dir = __dirname +"/site/production"
 
 var config = {
-	
+
 	context: __dirname,
 	entry: "./site/js/index.js",
-	
+
 	output: {
 		path: output_dir,
 		filename: 'index.js'
 	},
-	
+
 	module: {
-		loaders: [
+		rules: [
 			{
-				test: require.resolve('jquery'), loader: 'expose-loader?jQuery!expose-loader?$'
+				test: require.resolve('jquery'),
+        		exclude: [
+        			/node_modules/
+        		],
+				use: 'expose-loader?jQuery!expose-loader?$'
 			},
 			/* Uncomment this section if you're working with React/Babel
 			{
@@ -36,21 +40,29 @@ var config = {
 			},
 			*/
 			{
-				// loading sass asset files
 				test: /\.scss$/,
-				loaders: ExtractTextPlugin.extract({
-						fallback: 'style-loader',
-						use: [(dev? 'css-loader?sourceMap': 'css-loader'), (dev? 'sass-loader?sourceMap': 'sass-loader')]
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						(dev? 'css-loader?url=false&sourceMap': 'css-loader'),
+						(dev? 'sass-loader?sourceMap': 'sass-loader')
+					]
 				})
 			},
 			{
 				// load external resources (ie Google fonts)
 				test: /.(png|woff(2)?|eot|ttf|svg|jpg|jpeg|gif)(\?[a-z0-9=\.]+)?$/,
-				loader: 'url-loader?limit=100000'
+				use: {
+					loader: 'url-loader',
+					options: {
+						name: '[name].[ext]?[hash]',
+						limit: 1000000
+					}
+				}
 			}
 		]
 	},
-	
+
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.ProvidePlugin({
@@ -65,22 +77,22 @@ var config = {
  * Development-only configuration values
  **/
 if( dev ){
-	
+
 	// set compiled css location
 	config.plugins.push( new ExtractTextPlugin("index.css") );
-	
+
 	// we want source maps
 	config.devtool = 'source-map';
-	
-	
+
+
 /**
  * Production-only configuration values
  **/
 }else{
-	
+
 	// set our final output filename
 	config.output.filename = 'index.min.js';
-	
+
 	// re-iterate our production value as a string (for ReactJS building)
 	config.plugins.push(
 		new webpack.DefinePlugin({
@@ -89,18 +101,18 @@ if( dev ){
 			}
 		})
 	);
-	
+
 	// remove all debug and console code
-	config.module.loaders.push(
-		{ 
+	config.module.rules.push(
+		{
 			test: /\.(js|jsx)$/,
 			loader: "webpack-strip?strip[]=console.log,strip[]=console.info,strip[]=debug"
 		}
 	);
-	
+
 	// set compiled css location
 	config.plugins.push( new ExtractTextPlugin("index.min.css") );
-	
+
 	// uglify our js, with no sourcemaps
 	config.plugins.push(
 			new webpack.optimize.UglifyJsPlugin({

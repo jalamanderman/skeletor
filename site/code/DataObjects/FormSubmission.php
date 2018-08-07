@@ -19,22 +19,22 @@ use SilverStripe\Control\Director;
 use SilverStripe\SiteConfig\SiteConfig;
 
 class FormSubmission extends DataObject {
-	
+
 	private static $singular_name = 'Form submission';
 	private static $plural_name = 'Form submissions';
-	private static $description = 'The payload for all contact form submissions';	
+	private static $description = 'The payload for all contact form submissions';
 	private static $default_sort = 'Created DESC';
-	
+
 	private static $db = array(
 		'URL' => 'Varchar',
 		'Payload' => 'Text',
 		'IPAddress' => 'Varchar(18)'
 	);
-	
+
 	private static $has_one = array(
 		'Origin' => DataObject::class
 	);
-	
+
 	private static $summary_fields = array(
 		'Created' => 'Created',
 		'URL' => 'URL',
@@ -42,11 +42,7 @@ class FormSubmission extends DataObject {
 		'IPAddress' => 'IP Address'
 	);
 
-	/**
-	 * CMS Fields
-	 **/
 	public function getCMSFields(){
-
 		$fields = parent::getCMSFields();
 
 		if ($this->Origin()){
@@ -59,6 +55,7 @@ class FormSubmission extends DataObject {
 
 		$fields->addFieldToTab('Root.Main', HeaderField::create('Payload', 'Payload', 3));
 		$data = json_decode($this->Payload, true);
+
 		if ($data){
 			foreach ($data as $key => $value){
 				$fields->addFieldToTab('Root.Main', ReadonlyField::create('Playload_'.$key, $key, (string)$value));
@@ -87,7 +84,7 @@ class FormSubmission extends DataObject {
 		$data = json_decode($this->Payload);
 
 		// set up email "from" vars
-		$config = SiteConfig::current_site_config(); 
+		$config = SiteConfig::current_site_config();
 		if ($config->EmailSender && $config->EmailSender_Name){
 			$from = $config->EmailSender;
 		} else {
@@ -98,7 +95,6 @@ class FormSubmission extends DataObject {
 		$body = '';
 		$data->TimeSent = date('Y-m-d H:i:s');
 		$data->ID = $this->ID;
-		$data->Logo = $config->Logo();
 		$data->Logo = $config->Logo();
 
 		// different sources require different handling
@@ -154,7 +150,7 @@ class FormSubmission extends DataObject {
 				break;
 
 			default:
-				
+
 				$to = $config->EmailRecipients;
 				$subject = $config->Title . ' contact submission';
 				$data->Title = $data->Name . ' sent you a message through the website.';

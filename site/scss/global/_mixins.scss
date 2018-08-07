@@ -153,7 +153,7 @@
 @mixin grid( $cols, $col_gap: 2%, $row_gap: false ){
 
 	@if $row_gap == false{
-		$row_gap: $col_gap * 2; 
+		$row_gap: $col_gap * 2;
 	}
 
 	width: ( 0% + ( 100 / $cols ) - ( $col_gap * 2 ) + ( ( $col_gap * 2 ) / $cols ) );
@@ -210,12 +210,12 @@
 /**
  * Ease between states
  * Use this to smooth hover/active/focus events
- **/ 
+ **/
 @mixin animate( $duration: 0.2s, $easing: ease-in-out ){
 	-webkit-transition: all $duration $easing;
 	   -moz-transition: all $duration $easing;
 		 -o-transition: all $duration $easing;
-		    transition: all $duration $easing; 
+		    transition: all $duration $easing;
 }
 
 
@@ -251,50 +251,4 @@
 	&:last-of-type {
 		padding-right: 0;
 	}
-}
-
-/**
- * Square-Tile
- * Styles a tile with a perfect square
- * These tiles can be used for diffent spaces of a container
- */
-
-@mixin squaretile(){
-	.square {
-		position: relative;
-		height: 0;
-		padding-bottom: 100%;
-		.square-inner {
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			overflow: hidden;
-		}
-	}
-
-}
-
-
-@mixin optional-at-root($sel) {
-  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
-    @content;
-  }
-}
-
-@mixin placeholder {
-  @include optional-at-root('::-webkit-input-placeholder') {
-    @content;
-  }
-
-  @include optional-at-root(':-moz-placeholder') {
-    @content;
-  }
-
-  @include optional-at-root('::-moz-placeholder') {
-    @content;
-  }
-
-  @include optional-at-root(':-ms-input-placeholder') {
-    @content;
-  }
 }

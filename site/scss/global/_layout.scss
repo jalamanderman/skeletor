@@ -1,17 +1,13 @@
 
-/**
- * General layout
- **/
-
 body{
+}
+
+.page-content {
+	@include clearfix();
 }
 
 main {
 	@include col(2,3,20px)
-}
-
-aside {
-	@include col(1,3,20px)	
 }
 
 .inner {
@@ -23,18 +19,10 @@ aside {
 	@include clearfix();
 }
 
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
-
-.table {	
+.table {
 	.row {
 		@include clearfix();
-		
+
 		&.heading {
 			font-weight: bold;
 			border-bottom: 1px solid colour(light_grey);
@@ -55,15 +43,15 @@ footer {
  * Responsive
  **/
 @media all and (max-width: 1600px) {
-	
+
 }
 
 @media all and (max-width: 1200px) {
-	
+
 }
 
 @media all and (max-width: 800px) {
-	
+
 	/* navigation */
 	.hamburglar {
 		display: block;
@@ -130,9 +118,9 @@ footer {
 			}
 		}
 	}
-	
+
 }
 
 @media all and (max-width: 400px) {
-	
+
 }

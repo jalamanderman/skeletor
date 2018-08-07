@@ -19,13 +19,12 @@ class SiteConfigExtension extends DataExtension {
 	static $has_one = array(
 		'Logo' => Image::class
 	);
-	
-	public function updateCMSFields(FieldList $fields){
 
-		$fields->addFieldToTab('Root.Main', UploadField::create('Logo', 'Site logo')->setDescription('Default logo for email templates and shared links on social media'));		
+	public function updateCMSFields(FieldList $fields){
+		$fields->addFieldToTab('Root.Main', UploadField::create('Logo', 'Site logo')->setDescription('Default logo for email templates and shared links on social media'));
         $fields->addFieldToTab('Root.Main', HeaderField::create('Email','Email settings', 2));
-        $fields->addFieldToTab('Root.Main', TextField::create('EmailRecipients','Email recipients')->setDescription('Default addresses to send all website emails to (comma-separated list)'));
-		$fields->addFieldToTab('Root.Main', TextField::create('EmailSender','Email sender')->setDescription('Default <strong>address</strong> for website emails to come from (eg Joe Bloggs &lt;<em>joe.bloggs@website.com</em>&gt;)'));
-		$fields->addFieldToTab('Root.Main', TextField::create('EmailSender_Name','Email sender name')->setDescription('Default <strong>name</strong> for website emails to come from (eg <em>Joe Bloggs</em> &lt;joe.bloggs@website.com&gt;)'));
+        $fields->addFieldToTab('Root.Main', TextField::create('EmailRecipients','Email recipients')->setDescription('Email addresses to send all website emails <strong>to</strong> (comma-separated list)'));
+		$fields->addFieldToTab('Root.Main', TextField::create('EmailSender','Email sender')->setDescription('Email address for emails to come <strong>from</strong> (eg joe.bloggs@website.com)'));
+		$fields->addFieldToTab('Root.Main', TextField::create('EmailSender_Name','Email sender name')->setDescription('Name for emails to come <strong>from</strong> (eg Joe Bloggs)'));
 	}
 }

@@ -63,136 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(5);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {/**
- * On page load
- **/
-$(document).ready( function(){
-	MobileNav();
-});
-
-function MobileNav(){
-    $('.hamburglar').click( function(){
-    	$(this).toggleClass('open');
-        $('.mainnav').slideToggle();
-    });
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-<<<<<<< HEAD
-/* WEBPACK VAR INJECTION */(function($) {/**
- * On page load
- **/
-$(document).ready( function(){
-	// Start your website!
-	console.log('Loaded!');
-	PageSetup();
-});
-
-function PageSetup(){
-    ToggleContent();
-}
-
-function ToggleContent(){
-    $('.toggle-button').click(function(e){
-    	//e.preventDefault();
-        $(this).parent('.togglable').children('.togglable-content').slideToggle(100);
-        $(this).toggleClass('open');
-        if( $(this).children('.fa').length ){
-        	$(this).children('.fa').toggleClass('fa-plus');
-        	$(this).children('.fa').toggleClass('fa-minus');
-        }
-    });
-}
-=======
-/* WEBPACK VAR INJECTION */(function($) {/**
- * On page load
- **/
-$(document).ready( function(){
-	// Start your website!
-	console.log('Loaded!');
-	PageSetup();
-});
-
-function PageSetup(){
-    ToggleContent();
-}
-
-function ToggleContent(){
-    $('.toggle-button').click(function(e){
-    	e.preventDefault();
-        $(this).parent('.togglable').children('.togglable-content').slideToggle(200);
-        $(this).toggleClass('open');
-        if( $(this).children('.fa').length ){
-        	$(this).children('.fa').toggleClass('fa-plus');
-        	$(this).children('.fa').toggleClass('fa-minus');
-        }
-    });
-}
->>>>>>> 4
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(6);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10236,17 +10111,70 @@ return jQuery;
 
 
 /***/ }),
-/* 7 */
+/* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * On page load
+ **/
+$(document).ready( function(){
+	MobileNav();
+});
+
+function MobileNav(){
+    $('.hamburglar').click( function(){
+    	$(this).toggleClass('open');
+        $('.mainnav').slideToggle();
+    });
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {
+$(document).ready( function(){
+
+	// Only instanciate this functionality if our relevant DOM element(s) exist
+	// For functions, make sure you wrap them in a component-specific function to
+	// essentially namespace them. This prevents problematic overlapping function names.
+	if ($('.togglable').length > 0){
+	    $('.toggle-button').click(function(e){
+
+	        $(this).parent('.togglable').children('.togglable-content').slideToggle(100);
+	        $(this).toggleClass('open');
+
+	        if( $(this).children('.fa').length ){
+	        	$(this).children('.fa').toggleClass('fa-plus');
+	        	$(this).children('.fa').toggleClass('fa-minus');
+	        }
+	    });
+	}
+});
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 // Compile our scss
-// This 'includes' the SCSS index file which webpack then reads and 
+// This 'includes' the SCSS index file which webpack then reads and
 // compiles into the necessary css files
-__webpack_require__(2);
+__webpack_require__(1);
 
+// Inject our components
+__webpack_require__(2);
 __webpack_require__(3);
-__webpack_require__(4);
 
 
 /***/ })
