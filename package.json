@@ -1,6 +1,6 @@
 {
   "name": "Skeletor",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "PlasticStudio",
   "description": "Base install for SilverStripe websites",
   "repository": "https://github.com/plasticstudio/skeletor",
@@ -13,7 +13,7 @@
     "webpack-strip": "0.1.0",
     "node-sass": "4.5.0",
     "extract-text-webpack-plugin": "2.0.0",
-    
+
     "sass-loader": "6.0.2",
     "style-loader": "0.13.2",
     "css-loader": "0.26.2",

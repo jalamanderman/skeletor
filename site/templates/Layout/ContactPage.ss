@@ -1,5 +1,4 @@
-<section class="page cf">
-
+<section class="page-content">
 	<div class="inner">
 
 		<main class="typography">
@@ -25,5 +24,4 @@
 		</aside>
 
 	</div>
-
 </section>

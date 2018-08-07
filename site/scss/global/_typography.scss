@@ -5,11 +5,11 @@
  * belong in this file. For unique blocks and widgets, etc
  * you should put those in layout.css
  **/
- 
+
 
 body,
 html {
-	font-family: 'Open Sans', serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 }
 
@@ -21,13 +21,13 @@ html {
 h1 {
 	font-size: 3rem;
 	padding: 0.5rem 0;
-	font-weight: 300;
+	font-weight: 600;
 }
 
 h2 {
 	font-size: 2.2rem;
 	padding: 0.5rem 0;
-	font-weight: 300;
+	font-weight: 600;
 }
 
 h3 {
@@ -42,40 +42,36 @@ h4 {
 	font-weight: 400;
 }
 
+h5 {
+	font-size: 1rem;
+	padding: 0.5rem 0;
+	font-weight: 600;
+}
+
 
 
 /**
  * Body copy
  **/
 
-.typography p {
-	padding: 0.4rem 0;
-}
+.typography {
+    p {
+    	padding: 0.4rem 0;
+    }
 
-.typography a {
-	@include animate()
-}
+    ul,
+    ol {
+    	padding-left: 24px;
 
-.typography a:not(.button) {
-	text-decoration: none;
-	border-bottom: 1px dotted #CCCCCC;
-	color: colour(blue);
-}
+        li {
+        	padding: 0.2em 0;
+        }
+    }
 
-.typography a:not(.button):hover {
-	border-color: #000000;
-	color: #000000;
+    a {
+    	@include animate()
+    }
 }
-
-.typography ul,
-.typography ol{
-	padding-left: 24px;
-}
-
-.typography li {
-	padding: 0.2em 0;
-}
-
 
 
 /**
@@ -84,8 +80,14 @@ h4 {
  * Allows us to add a class (ie .centered-text) to text to apply font styles
  **/
 
-.centered-text {		text-align: center; }
-.bold-text {			font-weight: bold; }
-.italic-text {			font-style: italic; }
+.centered-text {
+    text-align: center;
+}
 
+.bold-text {
+    font-weight: bold;
+}
 
+.italic-text {
+    font-style: italic;
+}

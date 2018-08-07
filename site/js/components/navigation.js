@@ -1,13 +1,9 @@
-/**
- * On page load
- **/
-$(document).ready( function(){
-	MobileNav();
-});
 
-function MobileNav(){
-    $('.hamburglar').click( function(){
-    	$(this).toggleClass('open');
-        $('.mainnav').slideToggle();
-    });
-}
+$(document).ready( function(){
+	if ($('.mobile-menu-trigger').length > 0){
+	    $('.mobile-menu-trigger').click( function(){
+	    	$(this).toggleClass('open');
+	        $('.main-menu').slideToggle();
+	    });
+	}
+});
