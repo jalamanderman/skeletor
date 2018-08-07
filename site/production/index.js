@@ -10120,19 +10120,15 @@ return jQuery;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {/**
- * On page load
- **/
+/* WEBPACK VAR INJECTION */(function($) {
 $(document).ready( function(){
-	MobileNav();
+	if ($('.mobile-menu-trigger').length > 0){
+	    $('.mobile-menu-trigger').click( function(){
+	    	$(this).toggleClass('open');
+	        $('.main-menu').slideToggle();
+	    });
+	}
 });
-
-function MobileNav(){
-    $('.hamburglar').click( function(){
-    	$(this).toggleClass('open');
-        $('.mainnav').slideToggle();
-    });
-}
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

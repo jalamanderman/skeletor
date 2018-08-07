@@ -13,7 +13,7 @@
 				<img src="/site/images/logo.png" alt="{$SiteConfig.Title} logo" />
 			</a>
 
-			<% include MainNav %>
+			<% include Menu %>
 
 		</div>
 	</header>

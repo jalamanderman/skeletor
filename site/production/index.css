@@ -2172,52 +2172,19 @@ table {
  * Any significant component that is reused throughout the site. Typically these would have
  * a matching template (ie Includes/{COMPONENT_NAME}), and js (ie js/{COMPONENT_NAME}).
  **/
-/**
- * NAV PRIMARY
- **/
-nav.mainnav li {
-  display: inline-block;
-  margin-right: 10px;
-  position: relative;
-  background: #06b8e4; }
-  nav.mainnav li:hover, nav.mainnav li.current, nav.mainnav li.section {
-    background: #ffa619; }
-  nav.mainnav li.last {
-    margin-right: 0; }
-  nav.mainnav li a {
-    padding: 10px;
-    display: inline-block;
-    text-decoration: none;
-    color: #FFFFFF;
-    position: relative; }
-  nav.mainnav li .toggle-button {
-    padding: 0 1rem;
-    cursor: pointer;
-    color: #FFFFFF; }
-    nav.mainnav li .toggle-button.open {
-      -webkit-transform: rotate(180deg);
-      -moz-transform: rotate(180deg);
-      -o-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-      transform: rotate(180deg); }
-  nav.mainnav li .menu.level-2 {
-    position: absolute;
-    display: none;
-    background: #EEEEEE;
-    min-width: 100%; }
-    nav.mainnav li .menu.level-2 li {
-      display: block;
-      margin: 0; }
-      nav.mainnav li .menu.level-2 li a {
-        display: block;
-        white-space: nowrap;
-        background: #EEEEEE;
-        color: #000000;
-        border-bottom: 1px solid #FFFFFF; }
-        nav.mainnav li .menu.level-2 li a:hover {
-          border-bottom: 1px solid #BBBBBB; }
-  nav.mainnav li:hover .menu.level-2 {
-    /*display: block;*/ }
+.menu-item {
+  display: block;
+  position: relative; }
+  .menu-item.current > .menu-item-link {
+    font-weight: 600; }
+  .menu-item.expanded > .menu-submenu {
+    display: block; }
+  .menu-item .menu-item-link {
+    text-decoration: none; }
+
+.menu-submenu {
+  margin-left: 15px;
+  display: none; }
 
 .hamburglar {
   display: none;
