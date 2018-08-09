@@ -1,0 +1,8 @@
+---
+Name: my-project-name-here
+---
+SilverStripe\Core\Manifest\ModuleManifest:
+  project: app
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - SiteConfigExtension
