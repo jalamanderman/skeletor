@@ -20,10 +20,19 @@ var config = {
 		rules: [
 			{
 				test: require.resolve('jquery'),
-        		exclude: [
-        			/node_modules/
-        		],
-				use: 'expose-loader?jQuery!expose-loader?$'
+				exclude: [
+					/node_modules/
+				],
+				use: [
+					{
+						loader: 'expose-loader',
+						options: 'jQuery'
+					},
+					{
+						loader: 'expose-loader',
+						options: '$'
+					}
+				]
 			},
 			/* Uncomment this section if you're working with React/Babel
 			{
