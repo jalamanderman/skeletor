@@ -10112,6 +10112,12 @@ return jQuery;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {
@@ -10127,7 +10133,7 @@ $(document).ready( function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {
@@ -10153,12 +10159,6 @@ $(document).ready( function(){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10166,11 +10166,11 @@ $(document).ready( function(){
 // Compile our scss
 // This 'includes' the SCSS index file which webpack then reads and
 // compiles into the necessary css files
-__webpack_require__(3);
+__webpack_require__(1);
 
 // Inject our components
-__webpack_require__(1);
 __webpack_require__(2);
+__webpack_require__(3);
 
 
 /***/ })

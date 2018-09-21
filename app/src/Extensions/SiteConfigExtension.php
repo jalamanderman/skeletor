@@ -10,15 +10,19 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class SiteConfigExtension extends DataExtension {
 
-	static $db = array(
+	private static $db = [
 		'EmailRecipients' => 'Text',
 		'EmailSender' => 'Text',
 		'EmailSender_Name' => 'Text'
-	);
+	];
 
-	static $has_one = array(
+	private static $has_one = [
 		'Logo' => Image::class
-	);
+	];
+
+	private static $owns = [
+		'Logo'
+	];
 
 	public function updateCMSFields(FieldList $fields){
 		$fields->addFieldToTab('Root.Main', UploadField::create('Logo', 'Site logo')->setDescription('Default logo for email templates and shared links on social media'));

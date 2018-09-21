@@ -2150,8 +2150,7 @@ table {
   margin: 10px 0;
   width: 100%;
   border-spacing: 0;
-  border-collapse: collapse;
-  background: black; }
+  border-collapse: collapse; }
   table tr {
     border-bottom: 1px solid #BBBBBB; }
     table tr th,
@@ -2281,7 +2280,11 @@ form.contact-form {
   display: none; }
 
 .Security form {
-  margin: 0 auto; }
+  margin: 0 auto;
+  max-width: 500px;
+  border: 0;
+  padding: 30px;
+  background: #EEEEEE; }
   .Security form #ForgotPassword {
     display: inline-block; }
     .Security form #ForgotPassword a {

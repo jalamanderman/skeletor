@@ -9,7 +9,7 @@ var output_dir = __dirname +"/site/production"
 var config = {
 
 	context: __dirname,
-	entry: "./site/js/index.js",
+	entry: "./app/js/index.js",
 
 	output: {
 		path: output_dir,
