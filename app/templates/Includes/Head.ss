@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<title>$MenuTitle.XML | $SiteConfig.Title</title>
 
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scaleable=no" name="viewport" />
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
 
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="{$BaseHref}{$Link}?1" />
