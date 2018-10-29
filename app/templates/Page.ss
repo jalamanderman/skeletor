@@ -1,10 +1,4 @@
-<% include Head %>
-
-	<span class="hamburglar">
-		<span></span>
-		<span></span>
-		<span></span>
-	</span>
+<% include Header %>
 
 	<header class="page-header">
 		<div class="inner">
@@ -20,4 +14,4 @@
 
 	$Layout
 
-<% include Foot %>
+<% include Footer %>

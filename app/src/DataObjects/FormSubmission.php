@@ -65,21 +65,25 @@ class FormSubmission extends DataObject {
 		$config = $this->SiteConfig();
 		$payload = $this->Payload();
 
-		if ($config->EmailSender && $config->EmailSender_Name){
-			$from = $config->EmailSender;
-		} else {
-			$from = 'noreply@plasticstudio.co.nz';
-		}
-
-		// Build the admin-destined email
+		$subject = $config->Title.' submission';
+		$from = $config->EmailFrom();
 		$to = $config->EmailRecipients;
+
 		if (!$to){
 			trigger_error("Cannot send email: no Email Recipients defined in settings");
 		}
-		$subject = $config->Title.' submission';
-		$body = Controller::curr()->customise(['Submission' => $this, 'Payload' => $this->PayloadAsArray($fields)])->renderWith(['Email/FormSubmission_'.$this->OriginClass, 'Email/FormSubmission'])->value;
+
+		$body = Controller::curr()->customise([
+				'Submission' => $this,
+				'Payload' => $this->PayloadAsArray($fields)
+			])->renderWith(['Email/FormSubmission_'.$this->OriginClass, 'Email/FormSubmission'])->value;
+
 		$email = Email::create($from, $to, $subject, $body);
-		//$email->replyTo($data->Email);
+
+		if ($config->EmailReplyTo){
+			$email->replyTo($config->EmailReplyTo);
+		}
+
 		return $email->send();
 	}
 
@@ -92,16 +96,21 @@ class FormSubmission extends DataObject {
 		$config = $this->SiteConfig();
 		$payload = $this->Payload();
 
-		if ($config->EmailSender && $config->EmailSender_Name){
-			$from = $config->EmailSender;
-		} else {
-			$from = 'noreply@plasticstudio.co.nz';
+		$subject = "Confirmation of submission";
+		$from = $config->EmailFrom();
+		$to = $payload['Email'];
+
+		$body = Controller::curr()->customise([
+				'Submission' => $this,
+				'Payload' => $this->PayloadAsArray($fields)]
+			)->renderWith(['Email/FormSubmission_'.$this->OriginClass.'_Confirmation', 'Email/FormSubmission_Confirmation']);
+
+		$email = Email::create($from, $to, $subject, $body);
+
+		if ($config->EmailReplyTo){
+			$email->replyTo($config->EmailReplyTo);
 		}
 
-		$to = $payload['Email'];
-		$subject = "Confirmation of submission";
-		$body = Controller::curr()->customise(['Submission' => $this, 'Payload' => $this->PayloadAsArray($fields)])->renderWith(['Email/FormSubmission_'.$this->OriginClass.'_Confirmation', 'Email/FormSubmission_Confirmation']);
-		$email = Email::create($from, $to, $subject, $body);
 		return $email->send();
 	}
 

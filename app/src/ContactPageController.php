@@ -21,7 +21,7 @@ class ContactPage_Controller extends PageController {
         parent::init();
     }
 
-	function ContactForm(){
+	function Form(){
 
 		$params = $this->request->params();
 
@@ -50,7 +50,7 @@ class ContactPage_Controller extends PageController {
 		}
 	}
 
-    function doContactForm($data, $form) {
+    function doForm($data, $form) {
 		$submission = FormSubmission::create();
 		$submission->Payload = json_encode($data);
 		$submission->OriginID = $this->ID;

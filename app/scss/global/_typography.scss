@@ -1,9 +1,10 @@
+
 /**
- * Typography styles
+ * Global typographic styles
  *
  * All typography formatting and general font settings
  * belong in this file. For unique blocks and widgets, etc
- * you should put those in layout.css
+ * you should put those in their own component file
  **/
 
 
@@ -12,11 +13,6 @@ html {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 }
-
-
-/**
- * Headings
- **/
 
 h1 {
 	font-size: 3rem;
@@ -48,46 +44,20 @@ h5 {
 	font-weight: 600;
 }
 
+p {
+	padding: 0.4rem 0;
+}
 
+ul,
+ol {
+	padding-left: 24px;
 
-/**
- * Body copy
- **/
-
-.typography {
-    p {
-    	padding: 0.4rem 0;
-    }
-
-    ul,
-    ol {
-    	padding-left: 24px;
-
-        li {
-        	padding: 0.2em 0;
-        }
-    }
-
-    a {
-    	@include animate()
+    li {
+    	padding: 0.2em 0;
     }
 }
 
-
-/**
- * Text formatting
- *
- * Allows us to add a class (ie .centered-text) to text to apply font styles
- **/
-
-.centered-text {
-    text-align: center;
+a {
+	@include animate()
 }
 
-.bold-text {
-    font-weight: bold;
-}
-
-.italic-text {
-    font-style: italic;
-}

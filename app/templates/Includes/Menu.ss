@@ -1,12 +1,6 @@
 
-<span class="menu-toggle">
-	<span></span>
-	<span></span>
-	<span></span>
-</span>
-
 <nav class="menu">
-	<ul class="inner">
+	<ul class="menu__inner">
 		<% loop Menu(1) %>
 			<% include MenuItem %>
 		<% end_loop %>

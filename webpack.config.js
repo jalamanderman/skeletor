@@ -85,7 +85,7 @@ var config = {
 /**
  * Development-only configuration values
  **/
-if( dev ){
+if (dev){
 
 	// set compiled css location
 	config.plugins.push( new ExtractTextPlugin("index.css") );
@@ -97,7 +97,7 @@ if( dev ){
 /**
  * Production-only configuration values
  **/
-}else{
+} else {
 
 	// set our final output filename
 	config.output.filename = 'index.min.js';

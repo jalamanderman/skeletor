@@ -2019,20 +2019,17 @@ footer.page-footer {
       margin-bottom: 0; } }
 
 /**
- * Typography styles
+ * Global typographic styles
  *
  * All typography formatting and general font settings
  * belong in this file. For unique blocks and widgets, etc
- * you should put those in layout.css
+ * you should put those in their own component file
  **/
 body,
 html {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px; }
 
-/**
- * Headings
- **/
 h1 {
   font-size: 3rem;
   padding: 0.5rem 0;
@@ -2058,38 +2055,21 @@ h5 {
   padding: 0.5rem 0;
   font-weight: 600; }
 
-/**
- * Body copy
- **/
-.typography p {
+p {
   padding: 0.4rem 0; }
 
-.typography ul,
-.typography ol {
+ul,
+ol {
   padding-left: 24px; }
-  .typography ul li,
-  .typography ol li {
+  ul li,
+  ol li {
     padding: 0.2em 0; }
 
-.typography a {
+a {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
-
-/**
- * Text formatting
- *
- * Allows us to add a class (ie .centered-text) to text to apply font styles
- **/
-.centered-text {
-  text-align: center; }
-
-.bold-text {
-  font-weight: bold; }
-
-.italic-text {
-  font-style: italic; }
 
 input,
 select,
@@ -2100,7 +2080,8 @@ button {
   font-size: 1rem;
   padding: 10px 16px;
   box-sizing: border-box;
-  border: 1px solid transparent; }
+  border: 1px solid #BBBBBB;
+  width: 100%; }
   input:focus, input:active,
   select:focus,
   select:active,
@@ -2114,6 +2095,9 @@ button {
 
 .field {
   padding-bottom: 15px; }
+  .field label {
+    display: block;
+    padding-bottom: 4px; }
 
 button,
 .button,
@@ -2128,7 +2112,9 @@ input[type="submit"] {
   text-decoration: none;
   font-size: 1rem;
   font-weight: 700;
-  border: 0; }
+  border: 0;
+  width: auto;
+  padding: 10px 30px; }
   button:hover,
   .button:hover,
   input[type="submit"]:hover {
@@ -2172,104 +2158,47 @@ table {
  * Any significant component that is reused throughout the site. Typically these would have
  * a matching template (ie Includes/{COMPONENT_NAME}), and js (ie js/{COMPONENT_NAME}).
  **/
-.menu-item {
+.menu__item {
   display: block;
   position: relative; }
-  .menu-item.current > .menu-item-link {
+  .menu__item--current > .menu__item__link {
     font-weight: 600; }
-  .menu-item.expanded > .menu-submenu {
+  .menu__item--expanded > .menu__submenu {
     display: block; }
-  .menu-item .menu-item-link {
+  .menu__item__link {
     text-decoration: none; }
 
-.menu-submenu {
+.menu__submenu {
   margin-left: 15px;
   display: none; }
 
-.hamburglar {
-  display: none;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  z-index: 13;
-  cursor: pointer; }
-  .hamburglar span {
-    display: block;
-    position: absolute;
-    height: 20%;
-    width: 100%;
-    background: #000000;
-    opacity: 1;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: all 0.25s ease-in-out;
-    -moz-transition: all 0.25s ease-in-out;
-    -o-transition: all 0.25s ease-in-out;
-    transition: all 0.25s ease-in-out; }
-    .hamburglar span:nth-child(1) {
-      top: 0; }
-    .hamburglar span:nth-child(2) {
-      top: 40%; }
-    .hamburglar span:nth-child(3) {
-      bottom: 0; }
-  .hamburglar.open span {
-    background: #06b8e4; }
-  .hamburglar.open span:nth-child(2) {
-    opacity: 0;
-    width: 0; }
-  .hamburglar.open span:nth-child(1) {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    width: 120%;
-    top: 40%; }
-  .hamburglar.open span:nth-child(3) {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    width: 120%;
-    bottom: 40%; }
+.menu__item {
+  display: block;
+  position: relative; }
+  .menu__item--current > .menu__item__link {
+    font-weight: 600; }
+  .menu__item--expanded > .menu__submenu {
+    display: block; }
+  .menu__item__link {
+    text-decoration: none; }
 
-form.contact-form {
-  border: 0;
-  padding: 30px;
-  background: #EEEEEE; }
-  form.contact-form .field.text label, form.contact-form .field.textarea label {
-    text-transform: uppercase;
-    padding-bottom: 4px; }
-  form.contact-form .field.text input,
-  form.contact-form .field.text textarea, form.contact-form .field.textarea input,
-  form.contact-form .field.textarea textarea {
-    width: 100%; }
-  form.contact-form .Actions {
-    padding-top: 10px;
-    text-align: center; }
-  form.contact-form #ForgotPassword {
-    display: inline-block; }
-    form.contact-form #ForgotPassword a {
-      display: inline-block;
-      background: #BBBBBB;
-      color: #FFFFFF;
-      cursor: hand;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: 10px 16px;
-      box-sizing: border-box;
-      border: 0; }
-      form.contact-form #ForgotPassword a:hover {
-        background: #a2a2a2; }
+.menu__submenu {
+  margin-left: 15px;
+  display: none; }
+
+.menu__item {
+  display: block;
+  position: relative; }
+  .menu__item--current > .menu__item__link {
+    font-weight: 600; }
+  .menu__item--expanded > .menu__submenu {
+    display: block; }
+  .menu__item__link {
+    text-decoration: none; }
+
+.menu__submenu {
+  margin-left: 15px;
+  display: none; }
 
 /**
  * Page-specific
@@ -2280,11 +2209,7 @@ form.contact-form {
   display: none; }
 
 .Security form {
-  margin: 0 auto;
-  max-width: 500px;
-  border: 0;
-  padding: 30px;
-  background: #EEEEEE; }
+  margin: 0 auto; }
   .Security form #ForgotPassword {
     display: inline-block; }
     .Security form #ForgotPassword a {

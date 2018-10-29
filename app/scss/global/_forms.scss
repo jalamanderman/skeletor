@@ -8,7 +8,8 @@ button {
 	font-size: 1rem;
 	padding: 10px 16px;
 	box-sizing: border-box;
-	border: 1px solid transparent;
+	border: 1px solid colour(grey);
+	width: 100%;
 
 	&:focus,
 	&:active {
@@ -18,6 +19,11 @@ button {
 
 .field {
 	padding-bottom: 15px;
+
+	label {
+		display: block;
+		padding-bottom: 4px;
+	}
 }
 
 button,
@@ -31,6 +37,8 @@ input[type="submit"] {
 	font-size: 1rem;
 	font-weight: 700;
 	border: 0;
+	width: auto;
+	padding: 10px 30px;
 
 	&:hover{
 		background: darken(colour(blue), 10%);
