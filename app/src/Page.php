@@ -38,7 +38,7 @@ class Page extends SiteTree {
 		$is_method = $page->hasMethod($property);
 
 		// Recursively go up the tree looking for our property with a non-falsy value
-		while ($page->ParentID > 0 && ! ($is_method ? $page->$property()->exists() : ($page->$property !== null))){
+		while ($page->ParentID > 0 && ! ($is_method ? ($page->$property() && $page->$property()->exists()) : ($page->$property !== null))){
 			$page = $page->Parent();
 		}
 
