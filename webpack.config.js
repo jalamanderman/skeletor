@@ -53,7 +53,7 @@ var config = {
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
-						(dev? 'css-loader?url=false&sourceMap': 'css-loader'),
+						(dev? 'css-loader?url=false&sourceMap': 'css-loader?minimize=true'),
 						(dev? 'sass-loader?sourceMap': 'sass-loader')
 					]
 				})
