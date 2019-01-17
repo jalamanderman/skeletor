@@ -59,6 +59,6 @@ class SiteConfigExtension extends DataExtension {
 	 * @return Array
 	 **/
 	public function EmailRecipients(){
-		return explode(',', $this->owner->EmailRecipients);
+		return str_getcsv($this->owner->EmailRecipients, ',');
 	}
 }
