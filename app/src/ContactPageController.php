@@ -13,7 +13,7 @@ use SilverStripe\Control\Email\Email;
 class ContactPage_Controller extends PageController {
 
     private static $allowed_actions = array(
-		'ContactForm',
+		'Form',
 		'submitted'
 	);
 
@@ -39,12 +39,12 @@ class ContactPage_Controller extends PageController {
 			);
 
 			$actions = FieldList::create(
-				FormAction::create('doContactForm', 'Submit')
+				FormAction::create('doForm', 'Submit')
 			);
 
 			$validator = RequiredFields::create('Name', 'Email','Phone', 'Message');
 
-			$form = Form::create($this, 'ContactForm', $fields, $actions, $validator)->addExtraClass('contact-form');
+			$form = Form::create($this, 'Form', $fields, $actions, $validator)->addExtraClass('contact-form');
 
 			return $form;
 		}

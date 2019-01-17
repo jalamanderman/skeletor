@@ -37,7 +37,7 @@ class SiteConfigExtension extends DataExtension {
 
 
 	/**
-	 * Calculate what the sending email is
+	 * Calculate what the sender's email is
 	 * This must be set in .env to a validated email address
 	 * Note: SSP provide pre-validated *.sites.silverstripe.com email addresses
 	 *
@@ -48,5 +48,17 @@ class SiteConfigExtension extends DataExtension {
 			return $email;
 		}
 		return "noreply@plasticstudio.co";
+	}
+
+
+	/**
+	 * Prepare the email recipient(s)
+	 * This is managed in the CMS, but comma-separated values need to be exploded
+	 * to conform with RFC 2822, 3.6.2. SwiftMailer requires compliance.
+	 *
+	 * @return Array
+	 **/
+	public function EmailRecipients(){
+		return explode(',', $this->owner->EmailRecipients);
 	}
 }
