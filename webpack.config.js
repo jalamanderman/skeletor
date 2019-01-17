@@ -1,137 +1,91 @@
+process.traceDeprecation = true;
+module.exports = (env, argv) => {
 
-var dev = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+	var development_mode = (argv.mode === 'development');
 
-var node_dir = __dirname + '/node_modules';
-var output_dir = __dirname +"/app/production"
+	var webpack = require('webpack');
+	var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+	var MiniCssExtractPlugin = require("mini-css-extract-plugin")
+	var OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-var config = {
+	var node_dir = __dirname + '/node_modules';
+	var output_dir = __dirname +"/app/production"
 
-	context: __dirname,
-	entry: "./app/js/index.js",
-
-	output: {
-		path: output_dir,
-		filename: 'index.js'
-	},
-
-	module: {
-		rules: [
-			{
-				test: require.resolve('jquery'),
-				exclude: [
-					/node_modules/
-				],
-				use: [
-					{
-						loader: 'expose-loader',
-						options: 'jQuery'
-					},
-					{
-						loader: 'expose-loader',
-						options: '$'
-					}
-				]
-			},
-			/* Uncomment this section if you're working with React/Babel
-			{
-				// loading JSX (aka Babel) into browser-friendly ES6
-				test: /\.js$/,
-				exclude: [
-					/(node_modules|bower_components)/,
-					'index.js',
-				],
-				loader: 'babel-loader',
-				query: {
-					presets: ['es2015', 'react']
-				}
-			},
-			*/
-			{
-				test: /\.scss$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
+	var config = {
+		mode: process.env.NODE_ENV,
+		context: __dirname,
+		entry: "./app/js/index.js",
+		devtool: (development_mode ? 'source-map' : false),
+		output: {
+			path: output_dir,
+			filename: (development_mode ? 'index.js' : 'index.min.js')
+		},
+		module: {
+			rules: [
+				{
+					test: require.resolve('jquery'),
+	        		exclude: [
+	        			/node_modules/
+	        		],
+					use: 'expose-loader?jQuery!expose?$'
+				},
+				{
+					test: /\.scss$/,
 					use: [
-						(dev? 'css-loader?url=false&sourceMap': 'css-loader'),
-						(dev? 'sass-loader?sourceMap': 'sass-loader')
+						MiniCssExtractPlugin.loader,
+						{
+							loader: 'css-loader',
+							options: {
+								url: false,
+								sourceMap: true
+							}
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true
+							}
+						}
 					]
-				})
-			},
-			{
-				// load external resources (ie Google fonts)
-				test: /.(png|woff(2)?|eot|ttf|svg|jpg|jpeg|gif)(\?[a-z0-9=\.]+)?$/,
-				use: {
-					loader: 'url-loader',
-					options: {
-						name: '[name].[ext]?[hash]',
-						limit: 1000000
+				},
+				{
+					// load external resources (ie Google fonts)
+					test: /.(gif|jpg|png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
+					use: {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]?[hash]',
+							limit: 10000000
+						}
 					}
 				}
-			}
-		]
-	},
-
-	plugins: [
-		new webpack.optimize.OccurrenceOrderPlugin(),
-		new webpack.ProvidePlugin({
-		    $: "jquery",
-		    jQuery: "jquery",
-		    "window.jQuery": "jquery"
-		})
-	]
-};
-
-/**
- * Development-only configuration values
- **/
-if (dev){
-
-	// set compiled css location
-	config.plugins.push( new ExtractTextPlugin("index.css") );
-
-	// we want source maps
-	config.devtool = 'source-map';
-
-
-/**
- * Production-only configuration values
- **/
-} else {
-
-	// set our final output filename
-	config.output.filename = 'index.min.js';
-
-	// re-iterate our production value as a string (for ReactJS building)
-	config.plugins.push(
-		new webpack.DefinePlugin({
-			'process.env':{
-				'NODE_ENV': JSON.stringify('production')
-			}
-		})
-	);
-
-	// remove all debug and console code
-	config.module.rules.push(
-		{
-			test: /\.(js|jsx)$/,
-			loader: "webpack-strip?strip[]=console.log,strip[]=console.info,strip[]=debug"
-		}
-	);
-
-	// set compiled css location
-	config.plugins.push( new ExtractTextPlugin("index.min.css") );
-
-	// uglify our js, with no sourcemaps
-	config.plugins.push(
-			new webpack.optimize.UglifyJsPlugin({
-				compress: true,
-				mangle: false,
-				sourceMap: false,
-				comments: false
+			]
+		},
+		plugins: [
+			new webpack.optimize.OccurrenceOrderPlugin(),
+			new webpack.ProvidePlugin({
+			    $: "jquery",
+			    jQuery: "jquery",
+			    "window.jQuery": "jquery"
+			}),
+			new MiniCssExtractPlugin({
+				path: output_dir,
+				filename: (development_mode ? 'index.css' : 'index.min.css'),
+				sourceMap: true
 			})
-		);
-}
+		],
+		optimization: {
+			minimize: !development_mode,
+			minimizer: [
+				new UglifyJsPlugin({
+					cache: true,
+					parallel: true,
+					sourceMap: true
+				}),
+				new OptimizeCSSAssetsPlugin({})
+			]
+		},
+	};
 
-// now export our collated config object
-module.exports = config;
+	return config;
+}

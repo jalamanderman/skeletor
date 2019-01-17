@@ -67,7 +67,7 @@ class FormSubmission extends DataObject {
 
 		$subject = $config->Title.' submission';
 		$from = $config->EmailFrom();
-		$to = $config->EmailRecipients;
+		$to = $config->EmailRecipients();
 
 		if (!$to){
 			trigger_error("Cannot send email: no Email Recipients defined in settings");
