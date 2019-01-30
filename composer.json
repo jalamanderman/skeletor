@@ -11,7 +11,7 @@
         "silverstripe/campaign-admin": "^1.1",
 		"silverstripe/crontask": "^2.1",
 		"silverstripe/dynamodb": "4.0.1",
-		"silverstripe/errorpage": "1.3.0",
+		"silverstripe/errorpage": "^1.3",
 		"symbiote/silverstripe-gridfieldextensions": "^3.2",
 		"undefinedoffset/sortablegridfield": "^2.0",
 		"gdmedia/ss-auto-git-ignore": "^1",
