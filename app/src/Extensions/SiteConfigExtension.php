@@ -13,8 +13,8 @@ use SilverStripe\Core\Environment;
 class SiteConfigExtension extends DataExtension {
 
 	private static $db = [
-		'EmailRecipients' => 'Text',
-		'EmailSender' => 'Text'
+		'EmailRecipients' 	=> 'Text',
+		'EmailSender' 		=> 'Text'
 	];
 
 	private static $has_one = [

@@ -27,7 +27,7 @@ class FormSubmission extends DataObject {
 	private static $default_sort = 'Created DESC';
 
 	private static $db = array(
-		'Payload' => 'Text',
+		'Payload' 	=> 'Text',
 		'IPAddress' => 'Varchar(18)'
 	);
 
@@ -36,11 +36,11 @@ class FormSubmission extends DataObject {
 	);
 
 	private static $summary_fields = array(
-		'Created' => 'Created',
-		'OriginClass' => 'Origin type',
-		'Origin.Title' => 'Origin',
-		'Origin.Link' => 'Origin link',
-		'IPAddress' => 'IP Address'
+		'Created' 		=> 'Created',
+		'OriginClass' 	=> 'Origin type',
+		'Origin.Title' 	=> 'Origin',
+		'Origin.Link' 	=> 'Origin link',
+		'IPAddress' 	=> 'IP Address'
 	);
 
 	public function getCMSFields(){
@@ -65,9 +65,9 @@ class FormSubmission extends DataObject {
 		$config = $this->SiteConfig();
 		$payload = $this->Payload();
 
-		$subject = $config->Title.' submission';
+		$subject = $config->Title. ' ' . $this->Origin()->Title . ' form submission';
 		$from = $config->EmailFrom();
-		$to = $config->EmailRecipients();
+		$to = $this->EmailRecipients();
 
 		if (!$to){
 			trigger_error("Cannot send email: no Email Recipients defined in settings");
@@ -96,7 +96,7 @@ class FormSubmission extends DataObject {
 		$config = $this->SiteConfig();
 		$payload = $this->Payload();
 
-		$subject = "Confirmation of submission";
+		$subject = $config->Title. ' ' . $this->Origin()->Title . ' form submission confirmation';
 		$from = $config->EmailFrom();
 		$to = $payload['Email'];
 
@@ -114,11 +114,11 @@ class FormSubmission extends DataObject {
 		return $email->send();
 	}
 
-	function EditLink(){
+	public function EditLink(){
 		return Director::absoluteBaseURL() . 'admin/form-submissions/FormSubmission/EditForm/field/FormSubmission/item/'.$this->ID.'/edit';
 	}
 
-	function SiteConfig(){
+	public function SiteConfig(){
 		return SiteConfig::current_site_config();
 	}
 
@@ -127,7 +127,7 @@ class FormSubmission extends DataObject {
 	 *
 	 * @return Array
 	 **/
-	function Payload(){
+	public function Payload(){
 		return json_decode($this->Payload, true);
 	}
 
@@ -137,7 +137,7 @@ class FormSubmission extends DataObject {
 	 *
 	 * @return ArrayList
 	 **/
-	function PayloadAsArray($fields = null){
+	public function PayloadAsArray($fields = null){
 		$array = ArrayList::create();
 		$payload = $this->Payload();
 
@@ -165,4 +165,19 @@ class FormSubmission extends DataObject {
 		}
 		return $array;
 	}
+
+	/**
+	 * Prepare the email recipient(s)
+	 * This is an override function to use page dataobject over modeladmin
+	 *
+	 * @return Array
+	 **/
+	public function EmailRecipients(){
+		if(  isset($this->Origin()->EmailRecipients) && !is_null($this->Origin()->EmailRecipients) ) {
+			return $to = str_getcsv($this->Origin()->Recipients, ',');
+		} else {
+			return SiteConfig::current_site_config()->EmailRecipients();
+		}
+	}
+
 }

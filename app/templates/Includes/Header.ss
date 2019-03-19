@@ -18,9 +18,7 @@
 	<% end_if %>
 
 	<% if OgImage %>
-		<meta property="og:image" content="$OgImage.AbsoluteURL" />
-    <% else %>
-		<meta property="og:image" content="{$absoluteBaseHref}site/images/logo.png" />
+		<meta property="og:image" content="{$absoluteBaseHref}$OgImage.AbsoluteURL" />
 	<% end_if %>
 
 	<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
