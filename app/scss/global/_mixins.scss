@@ -1,7 +1,7 @@
 /**
  * [Subtracts the border and padding from the width of the element.]
  */
-@mixin border-box{
+@mixin borderBox{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
@@ -121,18 +121,18 @@
 }
 
 //	Background image - no repeat, centered, cover
-@mixin OptimiseBgImg() {
+@mixin optimiseBgImg($position: center center, $size: cover) {
 	background-repeat: no-repeat;
-	background-position: center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background-position: $position;
+	-webkit-background-size: $size;
+	-moz-background-size: $size;
+	-o-background-size: $size;
+	background-size: $size;
 }
 
 //	Center item horizontally and vertically
 // 	make parent item position relative
-@mixin CenterPositioning() {
+@mixin centerPositioning() {
 	position: absolute;
 	right: 0;
 	top: 0;
