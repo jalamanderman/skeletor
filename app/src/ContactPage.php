@@ -12,19 +12,19 @@ use SilverStripe\SiteConfig\SiteConfig;
 class ContactPage extends Page {
 	
 	private static $description = 'Standard page with a contact form';
-	private static $icon = 'site/cms/icons/email.png';
+	private static $icon = 'app/cms/icons/email.png';
 
-    private static $db = array(
-        'Recipients'=> 'Varchar(1024)',
-		'FromEmail'=> 'Varchar(255)',
-		'FromName'=> 'Varchar(255)',
-		'SendCustomerEmail'=> 'Boolean(false)',
-		'SuccessMessage'=> 'HTMLText'
-    );
+    private static $db = [
+        'Recipients'		=> 'Varchar(1024)',
+		'FromEmail'			=> 'Varchar(255)',
+		'FromName'			=> 'Varchar(255)',
+		'SendCustomerEmail'	=> 'Boolean(false)',
+		'SuccessMessage'	=> 'HTMLText'
+    ];
 
-    private static $has_many = array(
+    private static $has_many = [
         'Submissions' => 'FormSubmission'
-    );
+    ];
 
     public function getCMSFields(){
 	
