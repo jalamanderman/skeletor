@@ -2,11 +2,13 @@
 
 use SilverStripe\Forms\TextField;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\SiteConfig\SiteConfig;
 
 class Page extends SiteTree {
 
 	private static $db = [
-		'MetaTitle' => 'Text'
+		'MetaTitle' 	=> 'Text',
+		'MetaKeywords' 	=> 'Text'
 	];
 
 	public function getCMSFields(){
@@ -18,6 +20,7 @@ class Page extends SiteTree {
 				->setRightTitle('Customised title for use in search engines. Defaults to the page title.'),
 			'MetaDescription'
 		);
+		$fields->addFieldToTab("Root.Main.Metadata", TextareaField::create('MetaKeywords', 'Meta Keywords'), 'MetaDescription');
 
 		return $fields;
 	}

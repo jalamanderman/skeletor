@@ -8,9 +8,13 @@
 	<title>$MenuTitle.XML | $SiteConfig.Title</title>
 
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+	
+	<% if MetaDescription %><meta name="description" content="$MetaDescription" /><% end_if %>
+	<% if MetaKeywords %><meta name="keywords" content="$MetaKeywords" /><% end_if %>
+	<% if ExtraMeta %>$ExtraMeta<% end_if %>
 
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="{$BaseHref}{$Link}?1" />
+	<meta property="og:url" content="{$absoluteBaseURL}{$URLSegment}" />
 	<meta property="og:title" content="$Title" />
 
 	<% if MetaDescription %>

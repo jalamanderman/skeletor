@@ -1,17 +1,12 @@
 <?php
-
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\HeaderField;
-use SilverStripe\Forms\TreeDropdownField_Readonly;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
 use SilverStripe\Control\Email\Email;
@@ -173,8 +168,9 @@ class FormSubmission extends DataObject {
 	 * @return Array
 	 **/
 	public function EmailRecipients(){
-		if(  isset($this->Origin()->EmailRecipients) && !is_null($this->Origin()->EmailRecipients) ) {
-			return $to = str_getcsv($this->Origin()->Recipients, ',');
+
+		if(  isset($this->Origin()->Recipients) && !is_null($this->Origin()->Recipients) ) {
+			return str_getcsv($this->Origin()->Recipients, ',');
 		} else {
 			return SiteConfig::current_site_config()->EmailRecipients();
 		}
