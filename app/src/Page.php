@@ -1,6 +1,7 @@
 <?php
 
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextareaField;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\SiteConfig\SiteConfig;
 
@@ -14,13 +15,15 @@ class Page extends SiteTree {
 	public function getCMSFields(){
 		$fields = parent::getCMSFields();
 
-		$fields->addFieldToTab(
-			'Root.Main.Metadata',
-			TextField::create('MetaTitle','Meta Title')
-				->setRightTitle('Customised title for use in search engines. Defaults to the page title.'),
-			'MetaDescription'
-		);
-		$fields->addFieldToTab("Root.Main.Metadata", TextareaField::create('MetaKeywords', 'Meta Keywords'), 'MetaDescription');
+		if ($this->ClassName != 'SilverStripe\CMS\Model\RedirectorPage' ) {
+			$fields->addFieldToTab(
+				'Root.Main.Metadata',
+				TextField::create('MetaTitle','Meta Title')
+					->setRightTitle('Customised title for use in search engines. Defaults to the page title.'),
+				'MetaDescription'
+			);
+			$fields->addFieldToTab("Root.Main.Metadata", TextareaField::create('MetaKeywords', 'Meta Keywords'), 'MetaDescription');
+		}
 
 		return $fields;
 	}
